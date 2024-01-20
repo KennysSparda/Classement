@@ -7,16 +7,16 @@
 </head>
 <body>
     <header>
-        <button> 
-            menu 
+        <button onclick="toggleMenu()"> 
+            Menu 
         </button>
-        <img src="../../img/logo_bg.png" style="height: 50px; width: 200px;"  alt="">        
-        <button>
-            admin
+        <img src="/Classement/img/logo_bg.png" style="height: 50px; width: 200px;"  alt="">        
+        <button onclick="openAdmin()">
+            Admin
         </button>
     </header>
     <section>
-        <table>
+        <table id="tabelaPix">
             <thead>
               <tr>
                 <th colspan="3">TABELA PIX</th>
@@ -24,17 +24,15 @@
             </thead>
             <tbody>
               <tr>
-                <td>Operador</td> 
-                <td>Valor</td> 
+                <td>Operador</td>
+                <td>Valor</td>
                 <td>Transações</td>
               </tr>
-              <tr>
-                <td>Joel</td>
-                <td>0,00</td>
-                <td>2</td>
-              </tr>
+              <!-- Linhas da tabela serão adicionadas dinamicamente aqui -->
             </tbody>
           </table>  
     </section>
+
+    <script src="script/atualizaHomepage.js"></script>
 </body>
-</html>
+</html> 
