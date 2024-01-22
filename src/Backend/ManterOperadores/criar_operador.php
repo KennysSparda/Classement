@@ -7,13 +7,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Receba os dados do formulário
     $matricula = $_POST['matricula'];
     $nome = $_POST['nome'];
-    $senha = $_POST['senha'];
-    $senha_hash = md5($senha);
 
     // Execute a consulta SQL para inserir os dados na tabela de usuários
-    $sql = "INSERT INTO classement_usuarios_admin (matricula, nome, senha) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO classement_operadores (matricula, nome) VALUES (?, ?)";
     $stmt = $conexao->prepare($sql);
-    $stmt->bind_param("iss", $matricula, $nome, $senha_hash);
+    $stmt->bind_param("is", $matricula, $nome);
 
     if ($stmt->execute()) {
         // Inserção bem-sucedida

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="" type="image/svg+xml">
+    <title>Classement</title>
+</head>
+<body>
+    <header class="navbar-body">
+        <div class="navbar">
+            <h1 class="title">Classement</h1>
+            <h3>Manter Usuarios</h3>
+            <a href="/Classement/">Voltar</a>
+        </div>
+    </header>
+    <section class="container">
+        <div class="box b-float-left b-align-left">
+            <h3>Lista de Usuários</h3>
+        </div>
+        <div class="box b-float-right b-align-right">
+            <a title="Adicionar Novo Usuário" href="/Classement/Paginas/ManterUsuarios/CriarUsuarios/">Criar Usuario</a>
+        </div>
+    </section>
+    <section class="lista_usuarios">
+        <div id="usuarios-container">
+            <div class="user-card header-card">
+                <p>Matrícula</p>
+                <p>Nome</p>
+                <div class='divBotoes'>
+                    <p>Opções</p>
+                </div>
+            </div>
+        </div>
+        <h1 id="loading-message"></h1>
+        <ul id="lista-usuarios">
+            <!-- Aqui a lista de usuários será gerada dinamicamente -->
+        </ul>
+    </section>
+    <script src="js/ListarUsuarios.js"></script>
+    <script src="js/VerificarAcesso.js"></script>
+</body>
+</html>

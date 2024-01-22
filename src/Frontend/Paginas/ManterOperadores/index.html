@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="" type="image/svg+xml">
+    <title>Classement</title>
+</head>
+<body>
+    <header class="navbar-body">
+        <div class="navbar">
+            <h1 class="title">Classement</h1>
+            <h3>Manter Operadores</h3>
+            <a href="/Classement/Paginas/ManterOperador/">Voltar</a>
+        </div>
+    </header>
+    <section class="container">
+        <div class="box b-float-left b-align-left">
+            <h3>Lista de Operadores</h3>
+        </div>
+        <div class="box b-float-right b-align-right">
+            <a title="Adicionar Novo Operador" href="/Classement/Paginas/ManterOperadores/CriarOperador/">Criar Operador</a>
+        </div>
+    </section>
+    <section>
+        <div id="operadores-container">
+            <div>
+                <p>Matrícula</p>
+                <p>Nome</p>
+                <div>
+                    <p>Opções</p>
+                </div>
+            </div>
+        </div>
+        <h1 id="loading-message"></h1>
+        <ul id="lista-operadores">
+            <!-- Aqui a lista de operadores será gerada dinamicamente -->
+        </ul>
+    </section>
+    <script src="js/ListarOperadores.js"></script>
+    <script src="js/VerificarAcesso.js"></script>
+</body>
+</html>
