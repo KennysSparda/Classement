@@ -6,7 +6,7 @@ require_once('../conexao.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Receba os dados do front-end
     $matricula = $_POST['matricula'];
-    $senha = $_POST['password'];
+    $senha = $_POST['senha'];
     $senha_hash = md5($senha);
 
     if (strlen($senha) >= 8) {

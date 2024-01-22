@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Classement/Styles/section.css">
     <link rel="icon" href="" type="image/svg+xml">
     <title>Classement</title>
 </head>
@@ -10,11 +11,11 @@
     <header class="navbar-body">
         <div class="navbar">
             <h1 class="title">Classement</h1>
-            <a href="/Classement/Paginas/ManterUsuarios/">Voltar</a>    
+            <a href="/Classement/Paginas/ManterOperadores/">Voltar</a>    
         </div>
     </header>
     <section>
-        <form id="formCriarUsuario" style="text-align: center;">
+        <form id="formCriarOperador" style="text-align: center;">
             <h3>Criar Operador</h3>
             <div class="container" style="justify-content: center; width: 35%; margin: auto;">
                 <div class="box b-float-left b-align-right" style="display: flex; flex-direction: column;">
@@ -22,17 +23,15 @@
                     <br>
                     <label for="input_nome">Nome: </label>
                     <br>
-                    <label for="input_senha">Senha: </label>
                 </div>
                 <div class="box b-float-right b-float-right">
                     <input id="input_matricula" type="number" placeholder="4 digitos" required></input>
                     <input id="input_nome" type="text" required></input>
-                    <input id="input_senha" type="password" placeholder="8 digitos" required></input>
                 </div>
             </div>
             <button type="submit">Criar Operador</button>
         </form>
-        <div id="error-message" style="color: red;"></div>
+        <div id="error-message" style="color: #e91b1b;"></div>
     </section>
     
     <script src="../js/isValidInput.js"></script>

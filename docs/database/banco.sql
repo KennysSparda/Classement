@@ -14,5 +14,6 @@ CREATE TABLE classement_transacoes_diarias (
     matricula_operador INT,
     data DATE,
     quantidade_pix INT,
+    valor_transacao DECIMAL(10,2),
     FOREIGN KEY (matricula_operador) REFERENCES classement_operadores(matricula)
 );

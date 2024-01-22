@@ -12,7 +12,7 @@ function preencherFormulario() {
     formData.append("matricula", matricula);
     
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/Classement_backend/ManterUsuarios/buscar_usuario.php", true);
+    xhr.open("POST", "/Classement_backend/ManterOperadores/buscar_operador.php", true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
@@ -23,17 +23,17 @@ function preencherFormulario() {
                     document.getElementById("input_matricula").value = userData.usuario.matricula;
                     document.getElementById("input_nome").value = userData.usuario.nome;
                 } else {
-                    displayErrorMessage("Usuário não encontrado.");
+                    displayErrorMessage("Operador não encontrado.");
                 }
             } else {
-                displayErrorMessage("Erro ao buscar usuário.");
+                displayErrorMessage("Erro ao buscar operador.");
             }
         }
     };
     xhr.send(formData);
 };
 
-document.getElementById("formEditarUsuario").addEventListener("submit", function(event) {
+document.getElementById("formEditarOperador").addEventListener("submit", function(event) {
     event.preventDefault(); // Evita recarregar a página no envio padrão do formulário
 
     // Coleta os dados do formulário
@@ -49,7 +49,7 @@ function sendFormData(matricula, nome) {
     formData.append("nome", nome);
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/Classement_backend/ManterUsuarios/editar_usuario.php", true);
+    xhr.open("POST", "/Classement_backend/ManterOperadores/editar_operador.php", true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
@@ -68,9 +68,9 @@ function handleResponse(response) {
         displayErrorMessage(""); 
         clearForm();
         // Informa que o usuário foi editado com sucesso
-        alert("Usuário editado com sucesso!");
+        alert("Operador editado com sucesso!");
     } else {
-        displayErrorMessage("Erro ao editar usuário.");
+        displayErrorMessage("Erro ao editar operador.");
     }
 }
 
