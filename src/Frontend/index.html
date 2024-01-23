@@ -3,34 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/Classement/Styles/homepage.css">
     <title>Classement</title>
 </head>
 <body>
     <header>
-        <button onclick="toggleMenu()"> 
-            Menu 
-        </button>
+        <!-- <button onclick="toggleMenu()"> 
+            menu 
+        </button> -->
         <img src="/Classement/img/logo_bg.png" style="height: 50px; width: 200px;"  alt="">        
         <a href="/Classement/Paginas/HomepageADM/login.html">Admin</a>
     </header>
     <section>
+        <label for="dataSelecionada">Selecione a Data:</label>
+        <input type="date" id="dataSelecionada" value="<?php echo date('Y-m-d'); ?>" />
         <table id="tabelaPix">
             <thead>
-              <tr>
-                <th colspan="3">TABELA PIX</th>
-              </tr>
+                <tr>
+                    <th colspan="5">Ranking PIX</th>
+                </tr>
+                <tr>
+                    <th>Posição</th>
+                    <th>Matricula</th>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Transações</th>
+                </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Operador</td>
-                <td>Valor</td>
-                <td>Transações</td>
-              </tr>
-              <!-- Linhas da tabela serão adicionadas dinamicamente aqui -->
+                <!-- Linhas da tabela serão adicionadas dinamicamente aqui -->
             </tbody>
-          </table>
+        </table>
     </section>
 
     <script src="script/homepage.js"></script>
 </body>
-</html> 
+</html>

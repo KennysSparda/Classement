@@ -11,7 +11,7 @@ function preencherFormulario() {
     formData.append("matricula", matricula);
     
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/Classement_backend/ManterUsuarios/buscar_usuario.php", true);
+    xhr.open("POST", "/Classement_backend/ManterOperadores/buscar_operador.php", true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
@@ -61,7 +61,7 @@ function excluirUsuario() {
 
     // Crie uma requisição para excluir o usuário
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/Classement_backend/ManterUsuarios/excluir_usuario.php", true);
+    xhr.open("POST", "/Classement_backend/ManterOperadores/excluir_operador.php", true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {

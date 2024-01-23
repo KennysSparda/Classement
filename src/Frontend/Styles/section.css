@@ -1,0 +1,160 @@
+section {
+    text-align: left;
+    height: auto;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 120px;
+    padding: 24px;
+    border-radius: 20px;
+    background-color: var(--container-transparente);
+}
+
+section h3 {
+    font-size: 24px;
+    padding: 16px;
+}
+
+section h2 {
+    font-size: 24px;
+    padding: 16px;
+}
+
+section p {
+    padding: 16px;
+}
+
+/* ############ SETORES ############ */
+
+
+section li.ListaSetores p {
+    flex: 1;
+    margin: 0;
+}
+
+section.lista_setores {
+    margin-top: 20px;
+}
+
+section li.ListaSetores {
+    list-style-image: url('/PainelCPD/src/image/setor.svg');
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid var(--cor-primaria);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px var(--sombra);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+section li.header-setores {
+    border: 1px solid var(--cor-secundaria);
+}
+
+section li.ListaSetores:hover {
+    box-shadow: 0 4px 8px var(--sombra);
+    background: var(--container-transparente);
+}
+
+/* ############ USUARIOS ############ */
+
+section.lista_usuarios {
+    margin-top: 20px;
+}
+
+section div.user-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid var(--cor-primaria);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px var(--sombra);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+section div.user-card.header-card {
+    border: 1px solid var(--cor-secundaria);
+}
+
+section div.user-card.header-card::before {
+    background-image: none;
+}
+
+section div.user-card p {
+    flex: 1;
+    margin: 0;
+}
+
+section div.user-card:hover {
+    box-shadow: 0 4px 8px var(--sombra);
+    background: var(--container-transparente);
+}
+
+.user-card::before {
+    content: "";
+    background-image: url('/PainelCPD/src/image/user.svg');
+    background-size: 32px 32px;
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    display: inline-block;
+  }
+  
+/* ############ DOCUMENTOS ############ */
+section.lista_documentos {
+    margin-top: 20px;
+}
+section li.ListaDocumentos {
+    list-style-image: url('/PainelCPD/src/image/doc.svg');
+    list-style-position: inside;
+    box-shadow: 0 0 5px var(--sombra);
+    border-radius: 20px;
+    padding: 2%;
+    padding-left: 3%;
+    margin: 15px;
+    margin-left: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    transform-origin: center center;
+}
+
+section li.ListaDocumentos:hover {
+    box-shadow: 0 0 15px var(--sombra);
+    background: var(--container-transparente);
+    transform: scale(1.005);
+}
+
+.doc-info {
+    color: var(--cor-primaria);
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box {
+width: 35%;
+border-radius: 20px;
+}
+
+.b-float-left { float: left; }
+.b-float-middle { float: center;  }
+.b-float-right { float: right;  }
+
+.b-align-left { text-align: left; }
+.b-align-middle { text-align: center;  }
+.b-align-right { text-align: right;  }
+
+
+label {
+  height: 22px;
+}
+

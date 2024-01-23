@@ -1,85 +1,57 @@
 <?php
-// Inclua o arquivo de configuração com as credenciais
-include '../conexao.php';
+// Adicione isso ao início do arquivo
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+include("./inserir_dados_pix.php");
 
-// Função para ler um arquivo CSV e retornar um array associativo
-function lerCSV($file) {
-    $csvData = array_map('str_getcsv', file($file));
-    $header = array_shift($csvData); // Remove a primeira linha (cabeçalho)
-    $result = array();
+// Função para processar um arquivo CSV e armazenar os dados no array
+function processarCSV($nomeCampo, &$dados) {
+    if ($_FILES[$nomeCampo]['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES[$nomeCampo]['tmp_name'])) {
+        $caminho = $_FILES[$nomeCampo]['tmp_name'];
+        $handle = fopen($caminho, 'r');
 
-    foreach ($csvData as $row) {
-        $result[] = array_combine($header, $row);
-    }
+        // Pula a primeira linha (cabeçalho)
+        $cabecalho = fgetcsv($handle, 1000, ';');
 
-    return $result;
-}
-
-// Função para inserir dados no banco de dados
-function inserirDadosNoBanco($conexao, $dados) {
-    if (empty($dados)) {
-        echo "Nenhum dado para inserir.";
-        return;
-    }
-
-    // Prepara a consulta de inserção
-    $insertQuery = "INSERT INTO classement_transacoes_diarias (matricula_operador, data, quantidade_pix, valor_transacao) VALUES ";
-
-    // Utiliza uma instrução preparada para a inserção
-    $insertQuery .= "(?, CURDATE(), ?, ?), ";
-    $stmt = $conexao->prepare(rtrim($insertQuery, ', '));
-
-    // Verifica se a preparação da instrução foi bem-sucedida
-    if ($stmt === false) {
-        echo "Erro na preparação da instrução: " . $conexao->error;
-        return;
-    }
-
-    // Liga os parâmetros
-    $stmt->bind_param('sid', $matricula, $quantidadePix, $valorTransacao);
-
-    foreach ($dados as $matricula => $info) {
-        $quantidadePix = $info['quantidade_pix'] ?? 0; // Se não houver quantidade, assume 0
-        $valorTransacao = $info['valor_transacao'] ?? 0; // Se não houver valor, assume 0
-
-        // Atribui os valores e executa a instrução
-        $matricula = $conexao->real_escape_string($matricula);
-        $stmt->execute();
-
-        // Verifica se a execução foi bem-sucedida
-        if ($stmt->affected_rows === -1) {
-            echo "Erro ao inserir dados: " . $stmt->error;
+        // Processa as linhas do CSV
+        while (($linha = fgetcsv($handle, 1000, ';')) !== false) {
+            $operador = $linha[0];
+            $valor = $linha[1];
+            // Armazena os dados no array usando a matrícula como chave
+            $dados[$operador][$nomeCampo] = $valor;
         }
+
+        fclose($handle);
+        return true;
+    } else {
+        return false;
     }
-
-    // Fecha a instrução preparada
-    $stmt->close();
-    echo "Dados inseridos com sucesso.";
 }
 
-// Processa os arquivos CSV de quantidade e valor
-$fileQuantidade = $_FILES["csv_quantidade"]["tmp_name"];
-$fileValor = $_FILES["csv_valor"]["tmp_name"];
+// Verifique se o formulário foi enviado
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Array para armazenar os dados processados
+    $dados = array();
 
-$dadosQuantidade = lerCSV($fileQuantidade);
-$dadosValor = lerCSV($fileValor);
+    // Processa os arquivos CSV
+    $csvQuantidadeProcessado = processarCSV('csv_quantidade', $dados);
+    $csvValorProcessado = processarCSV('csv_valor', $dados);
 
-// Agrupa os dados por matrícula
-$dadosAgrupados = array();
+    // Verifica se ambos os arquivos foram processados com sucesso
+    if ($csvQuantidadeProcessado && $csvValorProcessado) {
+        // Exibe os dados processados
+        echo "<pre>";
+        print_r($dados);
+        echo "</pre>";
+        inserirDadosNoBanco($dados);
 
-foreach ($dadosQuantidade as $row) {
-    $matricula = $conexao->real_escape_string($row['Operador']);
-    $dadosAgrupados[$matricula]['quantidade_pix'] = $conexao->real_escape_string($row['Quantidade']);
+        // Agora você pode manipular os dados conforme necessário
+    } else {
+        echo "Erro ao processar os arquivos CSV.";
+    }
+} else {
+    // Se o formulário não foi enviado, redirecione para a página inicial ou exiba uma mensagem de erro
+    header('Location: index.html');
+    exit();
 }
-
-foreach ($dadosValor as $row) {
-    $matricula = $conexao->real_escape_string($row['Operador']);
-    $dadosAgrupados[$matricula]['valor_transacao'] = $conexao->real_escape_string($row['Total']);
-}
-
-// Chama a função para inserir os dados no banco
-inserirDadosNoBanco($conexao, $dadosAgrupados);
-
-// Fecha a conexão
-$conexao->close();
 ?>

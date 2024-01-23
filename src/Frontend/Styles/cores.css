@@ -1,4 +1,4 @@
-:root {
+/* :root {
     --cor-primaria: #ff8800;
     --cor-secundaria: green;
     --texto: #ff8800;
@@ -15,7 +15,7 @@
     --botao-excluir: #aa2222;
     --texto-botao-menu: #dddddd;
     --texto-botao-menu-hover: #ffffff;
-}
+} */
 /* NOVEMBRO AZUL */
 /* :root {
     --cor-primaria: blue;
@@ -57,7 +57,7 @@
 } */
 
 /* ANO NOVO */
-/* :root {
+:root {
     --cor-primaria: #ff00ff;
     --cor-secundaria: #00ff00;
     --texto: #0000ff;
@@ -74,4 +74,4 @@
     --botao-excluir: #aa2222;
     --texto-botao-menu: #222;
     --texto-botao-menu-hover: #000;
-} */
+}
