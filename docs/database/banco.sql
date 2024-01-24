@@ -4,9 +4,9 @@ CREATE TABLE classement_operadores (
 );
 
 CREATE TABLE classement_usuarios_admin (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(50) NOT NULL,
-    password VARCHAR(255) NOT NULL
+    matricula INT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL
+    senha VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE classement_transacoes_diarias (
