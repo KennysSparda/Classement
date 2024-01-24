@@ -8,18 +8,20 @@ if (isset($_GET['data_inicial']) && isset($_GET['data_final'])) {
 
     // Consulta SQL para obter os dados filtrados por intervalo de datas
     $sql = "SELECT
-                td.matricula_operador AS operador,
                 op.nome AS nome_operador,
-                td.valor_transacao AS valor,
-                td.quantidade_pix AS transacoes
+                td.matricula_operador AS operador,
+                SUM(td.valor_transacao) AS valor,
+                SUM(td.quantidade_pix) AS transacoes
             FROM
                 classement_transacoes_diarias td
             INNER JOIN
                 classement_operadores op ON td.matricula_operador = op.matricula
             WHERE
                 DATE(td.data) BETWEEN '$dataInicial' AND '$dataFinal'
+            GROUP BY
+                nome_operador
             ORDER BY
-                td.quantidade_pix DESC";
+                transacoes DESC";
 
     $result = $conexao->query($sql);
 

@@ -14,7 +14,7 @@ function atualizarTabelaPix() {
                 newRow.insertCell(0).textContent = (index + 1).toString(); // Adiciona a posição
                 newRow.insertCell(1).textContent = row.operador;
                 newRow.insertCell(2).textContent = row.nome_operador;
-                newRow.insertCell(3).textContent = row.valor;
+                newRow.insertCell(3).textContent = Number(row.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
                 newRow.insertCell(4).textContent = row.transacoes;
             });
         })
@@ -32,6 +32,8 @@ document.getElementById('dataSelecionada').addEventListener('change', dataSeleci
 document.addEventListener('DOMContentLoaded', () => {
     // Obtemos o elemento de input 'dataSelecionada'
     const dataSelecionadaInput = document.getElementById('dataSelecionada');
+    const dataSelecionadaInput1 = document.getElementById('dataSelecionada1');
+    const dataSelecionadaInput2 = document.getElementById('dataSelecionada2');
 
     // Criamos uma nova data representando a data atual
     const dataAtual = new Date();
@@ -41,7 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Definimos o valor do input como a data formatada
     dataSelecionadaInput.value = dataFormatada;
-
+    dataSelecionadaInput1.value = dataFormatada;
+    dataSelecionadaInput2.value = dataFormatada;
     // Adicionamos um ouvinte de evento para detectar alterações na data
     dataSelecionadaInput.addEventListener('change', dataSelecionadaAlterada);
 
@@ -49,6 +52,53 @@ document.addEventListener('DOMContentLoaded', () => {
     atualizarTabelaPix();
 });
 
-// Variaveis no backend
-// $dataInicial = $_GET['data_inicial'];
-// $dataFinal = $_GET['data_final'];
+
+
+function pesquisaAvancada() {
+    const dataSelecionada = document.getElementById('dataSelecionada');
+    const dataSelecionada1 = document.getElementById('dataSelecionada1').value;
+    const dataSelecionada2 = document.getElementById('dataSelecionada2').value;
+
+    if (dataSelecionada2) {
+        dataSelecionada.disabled = true; // Desabilita a primeira data
+
+        // Variaveis no backend
+        // $dataInicial = $_GET['data_inicial'];
+        // $dataFinal = $_GET['data_final'];
+        const url = `/Classement_backend/pix/pesquisa_avancada_pix.php?data_inicial=${dataSelecionada1}&data_final=${dataSelecionada2}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const tabelaPix = document.getElementById('tabelaPix').getElementsByTagName('tbody')[0];
+                tabelaPix.innerHTML = "";
+
+                data.forEach((row, index) => {
+                    const newRow = tabelaPix.insertRow();
+                    newRow.insertCell(0).textContent = (index + 1).toString();
+                    newRow.insertCell(1).textContent = row.operador;
+                    newRow.insertCell(2).textContent = row.nome_operador;
+                    newRow.insertCell(3).textContent = Number(row.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                    newRow.insertCell(4).textContent = row.transacoes;
+                });
+            })
+            .catch(error => console.error('Erro ao buscar dados:', error));
+    } else {
+        dataSelecionada1.disabled = false; // Habilita a primeira data se a pesquisa avançada for cancelada
+        alert('Selecione ambas as datas para a pesquisa avançada.');
+    }
+}
+
+function togglePesquisaForm() {
+    const pesquisaSimples = document.getElementById('pesquisaSimples');
+    const pesquisaAvancada = document.getElementById('pesquisaAvancada');
+    const tipoPesquisa = document.querySelector('input[name="tipoPesquisa"]:checked').value;
+
+    if (tipoPesquisa === 'simples') {
+        pesquisaSimples.style.display = 'block';
+        pesquisaAvancada.style.display = 'none';
+    } else {
+        pesquisaSimples.style.display = 'none';
+        pesquisaAvancada.style.display = 'block';
+    }
+}

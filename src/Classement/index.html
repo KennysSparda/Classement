@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/Classement/Styles/input.css">
     <link rel="stylesheet" type="text/css" href="/Classement/Styles/navbar.css">
     <link rel="stylesheet" type="text/css" href="/Classement/Styles/section.css">
+    <link rel="stylesheet" type="text/css" href="/Classement/Styles/button.css">
     <title>Classement</title>
 </head>
 <body>
@@ -18,10 +19,30 @@
         </div>
     </header>
     <section>
+        <div class="container"></div>
+        <div class="box b-align-left b-float-left" style="width: auto;">
+            <label>
+                <input type="radio" name="tipoPesquisa" value="simples" checked onchange="togglePesquisaForm()"> Pesquisa Simples
+            </label>
+            <label>
+                <input type="radio" name="tipoPesquisa" value="avancada" onchange="togglePesquisaForm()"> Pesquisa Avançada
+            </label>
+        </div>
+        <div id="pesquisaSimples" class="box b-align-right b-float-right">
+            <label for="dataSelecionada">Data</label>
+            <input type="date" id="dataSelecionada" />
+        </div>
+        <div id="pesquisaAvancada" style="display: none; width: auto;"  class="box b-align-right b-float-right">
+            <label>Data Inicial:</label>
+            <input type="date" id="dataSelecionada1" />
+            <label>Data Final:</label>
+            <input type="date" id="dataSelecionada2" />
+            <button onclick="pesquisaAvancada()">Pesquisa Avançada</button>
+        </div>
         <table id="tabelaPix">
             <thead>
                 <tr>
-                    <th colspan="5">Ranking PIX<span style="float: right; margin-right: 10px;">Data<input type="date" id="dataSelecionada" /></span></th>
+                    <th colspan="5">Ranking PIX</span></th>
                 </tr>
                 <tr>
                     <th>Posição</th>
