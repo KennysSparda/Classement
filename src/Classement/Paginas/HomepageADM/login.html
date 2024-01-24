@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Classement/Styles/login.css">
+    <link rel="stylesheet" href="/Classement/Styles/footer.css">
+    <link rel="stylesheet" href="/Classement/Styles/button.css">
+    <link rel="stylesheet" href="/Classement/Styles/input.css">
+    <link rel="stylesheet" href="/Classement/Styles/body.css">
+    <link rel="stylesheet" href="/Classement/Styles/cores.css">
+    <link rel="stylesheet" href="/Classement/Styles/section.css">
+    <title>Classement</title>
+</head>
+<body>
+    <div class="title">
+        <img class="logo" src="/Classement/img/logo_bg.png" alt="Logo é um letreiro escrito Atacadao">
+    </div>
+    <section class="login" >
+        <a href="/Classement" style="display: flex; float: right; text-decoration: none; font-size: 25px;">&times; </a>
+        <br>
+        <h2>Login Administrador</h2>
+        <br>
+        <form method="POST" onsubmit="event.preventDefault(); Acessar();">
+            <div class="container" style="justify-content: center;">
+                <div class="box b-align-right b-float-left"  style="display: flex; flex-direction: column;">
+                    <label for="matricula_input">Matricula</label>
+                    <br>
+                    <label for="senha_input">Senha</label>
+                </div>
+                <div class="box b-align-left b-float-right">
+                    <input type="number" id="matricula_input"  placeholder="Matricula com 4 dígitos" required>
+                    <input type="password" id="senha_input" placeholder="Senha com 8 dígitos" required>
+                </div>
+            </div>
+            <button type="submit" style="margin-left: 80%; background: var(--botao-criar);">Login</button>
+        </form>
+    </section>
+    <script src="/Classement/Scripts/Acesso.js"></script>
+</body>
+</html>

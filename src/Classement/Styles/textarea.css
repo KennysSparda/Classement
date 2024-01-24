@@ -1,0 +1,29 @@
+textarea {
+    border: none;
+    background: var(--fundo-input);
+    border-radius: 20px;
+    margin: 10px;
+    padding: 10px;
+    color: var(--texto-input);
+    resize: vertical;
+    width: 95%;
+    min-height: 300px;
+    font-family: monospace;
+    font-size: large;
+    /* Estilo da barra de rolagem */
+    scrollbar-width: thin;
+    scrollbar-color: var(--fundo) var(--fundo-input);
+}
+
+textarea::-webkit-scrollbar {
+    width: 8px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: var(--fundo);
+    border-radius: 20px;
+}
+
+textarea::-webkit-scrollbar-track {
+    background-color:  var(--fundo-input);
+}

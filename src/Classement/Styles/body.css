@@ -1,0 +1,46 @@
+* { 
+    color: var(--texto);
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    text-align: center;
+    background: var(--fundo);
+    scrollbar-width: thin;
+    scrollbar-color: var(--fundo) var(--fundo-input);
+}
+
+body::-webkit-scrollbar {
+width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--fundo);
+    border-radius: 20px;
+}
+
+body::-webkit-scrollbar-track {
+background-color: var(--fundo-input);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* Firefox */
+input[type=number] {
+    appearance: textfield;
+}
+
+h1 {
+    text-decoration: var(--cor-secundaria) underline;
+}
+
+.logo-bg {
+    margin: auto;
+    margin-top: 30vh;
+    height: 220px;
+    width: auto;
+}

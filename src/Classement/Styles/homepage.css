@@ -1,0 +1,59 @@
+/* Reset de estilos para garantir uma base consistente em todos os navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--fundo);
+    color: var(--texto);
+}
+
+header {
+    background-color: #333;
+    color: var(--texto-botao);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header button {
+    background-color: var(--fundo);
+    color: var(--texto-botao);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+section {
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid var(--cor-secundaria);
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+td {
+    background-color: var(--texto-botao-menu);
+    color: var(--texto-input);
+}
+
+thead {
+    background-color: var(--container);
+    color: var(--texto-botao);
+}

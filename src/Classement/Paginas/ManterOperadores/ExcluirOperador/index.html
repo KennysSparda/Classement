@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Classement/Styles/body.css">
+    <link rel="stylesheet" href="/Classement/Styles/navbar.css">
+    <link rel="stylesheet" href="/Classement/Styles/section.css">
+    <link rel="stylesheet" href="/Classement/Styles/select.css">
+    <link rel="stylesheet" href="/Classement/Styles/input.css">
+    <link rel="stylesheet" href="/Classement/Styles/button.css">
+    <link rel="stylesheet" href="/Classement/Styles/cores.css">
+    <link rel="icon" href="" type="image/svg+xml">
+    <title>Classement</title>
+</head>
+<body>
+    <header class="navbar-body">
+        <div class="navbar">
+            <h1 class="title">Classement</h1>
+            <a href="/Classement/Paginas/ManterOperadores/">Voltar</a>
+        </div>
+    </header>
+    <section>
+        <label for="input_matricula">Matrícula: </label>
+        <input id="input_matricula" type="number" readonly>
+        <label for="input_nome">Nome: </label>
+        <input id="input_nome" readonly>
+        <button onclick="excluirUsuario()">Excluir Operador</button>
+        <div id="error-message" style="color: red;"></div>
+    </section>
+
+    <script src="js/ExcluirOperador.js"></script>
+    <script src="/Classement/Scripts/VerificarLogin.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/Classement/Styles/homepage.css">
+    <link rel="stylesheet" type="text/css" href="/Classement/Styles/cores.css">
+    <link rel="stylesheet" type="text/css" href="/Classement/Styles/input.css">
+    <link rel="stylesheet" type="text/css" href="/Classement/Styles/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/Classement/Styles/section.css">
+    <title>Classement</title>
+</head>
+<body>
+    <header class="navbar-body">
+        <div class="navbar">
+            <img class="title" src="/Classement/img/logo_bg.png" style="height: 50px; width: 200px;"  alt="">
+            <a href="/Classement/Paginas/HomepageADM/login.html">Admin</a>
+        </div>
+    </header>
+    <section>
+        <table id="tabelaPix">
+            <thead>
+                <tr>
+                    <th colspan="5">Ranking PIX<span style="float: right; margin-right: 10px;">Data<input type="date" id="dataSelecionada" /></span></th>
+                </tr>
+                <tr>
+                    <th>Posição</th>
+                    <th>Matricula</th>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Transações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Linhas da tabela serão adicionadas dinamicamente aqui -->
+            </tbody>
+        </table>
+    </section>
+
+    <script src="Scripts/AtualizarRanking.js"></script>
+</body>
+</html>

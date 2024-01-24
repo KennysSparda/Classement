@@ -1,0 +1,77 @@
+:root {
+    --cor-primaria: #ff8800;
+    --cor-secundaria: green;
+    --texto: #ff8800;
+    --fundo: #333333;
+    --fundo-input: silver;
+    --container: #555555;
+    --container-transparente: #55555555;
+    --sombra: black;
+
+    --texto-input: black;
+    --texto-botao: #ffffff;
+    --botao-criar: #22aa22;
+    --botao-editar: #aaaa22;
+    --botao-excluir: #aa2222;
+    --texto-botao-menu: #dddddd;
+    --texto-botao-menu-hover: #ffffff;
+}
+/* NOVEMBRO AZUL */
+/* :root {
+    --cor-primaria: blue;
+    --cor-secundaria: rgb(45, 45, 255);
+    --texto: silver;
+    --fundo: #333333;
+    --fundo-input: black;
+    --container: #555555;
+    --container-transparente: #55555555;
+    --sombra: blue;
+
+    --texto-input: #ffffff;
+    --texto-botao: #ffffff;
+    --botao-criar: #22aa22;
+    --botao-editar: #aaaa22;
+    --botao-excluir: #aa2222;
+    --texto-botao-menu: #dddddd;
+    --texto-botao-menu-hover: #ffffff;
+} */
+
+/* OUTUBRO ROSA */
+/* :root {
+    --cor-primaria: magenta;
+    --cor-secundaria: rgb(255, 45, 255);
+    --texto: silver;
+    --fundo: #333333;
+    --fundo-input: black;
+    --container: #555555;
+    --container-transparente: #55555555;
+    --sombra: magenta;
+
+    --texto-input: #ffffff;
+    --texto-botao: #ffffff;
+    --botao-criar: #22aa22;
+    --botao-editar: #aaaa22;
+    --botao-excluir: #aa2222;
+    --texto-botao-menu: #dddddd;
+    --texto-botao-menu-hover: #ffffff;
+} */
+
+/* ANO NOVO */
+/* :root {
+    --cor-primaria: #ff00ff;
+    --cor-secundaria: #00ff00;
+    --texto: #0000ff;
+    --fundo: #000;
+    --fundo-input: #000;
+    --container: #aaaaaa;
+    --container-transparente: #aaaaaaaa;
+    --sombra: #00ff00;
+
+    --texto-input: #ffffff;
+    --texto-botao: #000;
+    --botao-criar: #22aa22;
+    --botao-editar: #aaaa22;
+    --botao-excluir: #aa2222;
+    --texto-botao-menu: #222;
+    --texto-botao-menu-hover: #000;
+} */

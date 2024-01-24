@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Classement/Styles/navbar.css">
+    <link rel="stylesheet" href="/Classement/Styles/cores.css">
+    <link rel="stylesheet" href="/Classement/Styles/section.css">
+    <link rel="stylesheet" href="/Classement/Styles/body.css">
+    <link rel="stylesheet" href="/Classement/Styles/button.css">
+    <title>Classement</title>
+</head>
+<body>
+    <header class="navbar-body">
+        <div class="navbar">
+            <h1 class="title">Classement</h1>
+            <h3 id="navbar_wellcome"></h3>
+            <a href="/Classement/Paginas/ManterOperadores/">Gerenciar operadores</a>
+            <a href="/Classement/Paginas/ManterUsuarios/">Gerenciar usuarios</a>
+            <a href="/Classement/Paginas/ManterUsuarios/Perfil">Perfil</a>
+            <a href="/Classement" onclick="localStorage.removeItem('usuario');">Sair</a>
+            <a href="/Classement">Voltar</a>
+        </div>
+    </header>
+    <section class="container">
+        <div class="box b-float-left b-align-middle">
+            <h2>PIX</h2>
+            <a href="/Classement/Paginas/Pix/atualizar_transacoes.html"><button>Adicionar Pontuação</button></a>
+
+        </div>
+        <div class="box b-float-middle b-align-middle">
+            <h2>Recargas</h2>
+            <a href="/Classement/Paginas/Recargas/atualizar_transacoes.html"><button>Adicionar Pontuação</button></a>
+        </div>
+        <div class="box b-float-right b-align-middle">
+            <h2>NPS</h2>
+            <a href="/Classement/Paginas/NPS/atualizar_transacoes.html"><button>Adicionar Pontuação</button></a>
+        </div>
+    </section>
+    <script src="/Classement/Scripts/VerificarLogin.js"></script>
+</body>
+</html>

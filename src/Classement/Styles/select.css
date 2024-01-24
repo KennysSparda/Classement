@@ -1,0 +1,7 @@
+select {
+    border: none;
+    background: var(--fundo-input);
+    border-radius: 20px;
+    margin: 8px;
+    padding: 4px;
+}
