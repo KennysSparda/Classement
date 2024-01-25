@@ -21,29 +21,23 @@
         </div>
     </header>
     <section>
-        <h2>Atualizar ranking pix</h2>
-        <form action="/Classement_backend/pix/processa_csv_pix.php" method="post" enctype="multipart/form-data">
+        <h2>Atualizar ranking recargas</h2>
+        <form action="/Classement_backend/recargas/processa_csv_recargas.php" method="post" enctype="multipart/form-data">
             <label for="dataEscolhida">Selecione uma data: </label>
             <input type="date" name="dataEscolhida" id="dataEscolhida" required>
             <br>
-            <label for="csv_quantidade">Escolha o arquivo CSV de quantidade:</label>
-            <input type="file" name="csv_quantidade" id="csv_quantidade" accept=".csv" required>
+            <label for="csv_quantidade">Escolha o arquivo CSV de recargas:</label>
+            <input type="file" name="csv" id="csv_quantidade" accept=".csv" required>
             <br>
-            <label for="csv_valor">Escolha o arquivo CSV de valor:</label>
-            <input type="file" name="csv_valor" id="csv_valor" accept=".csv" required>
-            <br>
-            <button type="submit" onclick="excluirDadosDoDia()">Enviar</button>
+            <button type="submit">Enviar</button>
         </form>
     </section>
     <section>
         <h2>Como fazer?</h2>
-        <h4>Procedimento para gerar CSV de Quantidade</h4>
+        <h4>Procedimento para gerar CSV de Recargas</h4>
         <p>Gerar os dois arquivos através do SITEF -> Consultas Sitef Customizadas -> Em "Dados" selecione "OPERADOR" -> Em "Agregar" selecione Quantidade -> Em "Estados" selecione Efetuada PDV -> Em "Tipo" selecione PIX</p>
-        <br>
-        <h4>Procedimento para gerar CSV de Valor</h4>
-        <p>Gerar os dois arquivos através do SITEF -> Consultas Sitef Customizadas -> Em "Dados" selecione "OPERADOR" -> Em "Agregar" selecione Total -> Em "Estados" selecione Efetuada PDV -> Em "Tipo" selecione PIX</p>
     </section>
 
-    <script src="js/zerarDadosDoDia.js"></script>
+    <script src="/Classement/Scripts/VerificarLogin.js"></script>
 </body>
 </html>

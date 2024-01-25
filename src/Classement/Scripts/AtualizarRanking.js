@@ -132,3 +132,22 @@ function togglePesquisaForm() {
         dataSelecionadaAlteradaPesquisaAvancada();
     }
 }
+
+function toggleRanking() {
+    const sectionPix = document.getElementById("pix");
+
+    if (rankingSelecionado === 'pix') {
+        sectionPix.style.display = 'block';
+        recargas.style.display = 'none';
+        nps.style.display = 'none';
+        
+    } else if (rankingSelecionado === 'recargas') {
+        sectionPix.style.display = 'none';
+        recargas.style.display = 'block';
+        nps.style.display = 'none';
+    } else {
+        sectionPix.style.display = 'none';
+        recargas.style.display = 'none';
+        nps.style.display = 'nps';
+    }
+}

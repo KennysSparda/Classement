@@ -1,7 +1,7 @@
 // Verifique se o usuário está logado
-const usuario = JSON.parse(localStorage.getItem('usuario'));
+const usuario_classement = JSON.parse(localStorage.getItem('usuario_classement'));
 
-if (usuario) {
+if (usuario_classement) {
   window.location.href = "/Classement/Paginas/HomepageADM";
 }
 
@@ -29,8 +29,7 @@ function Acessar() {
         // Verifique o nível de acesso na resposta do servidor
         if (response.usuario) {
           // Armazene os dados do usuário no localStorage
-          localStorage.setItem('usuario', JSON.stringify(response.usuario));
-          console.log(response.usuario)
+          localStorage.setItem('usuario_classement', JSON.stringify(response.usuario));
           // Redirecione com base na resposta encaminhar_para
           window.location.href = "/Classement/Paginas/HomepageADM";
 

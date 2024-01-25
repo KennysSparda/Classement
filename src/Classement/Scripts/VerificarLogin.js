@@ -4,11 +4,11 @@ const TEMPO_INATIVIDADE = 15 * 60 * 1000; // 15 minutos em milissegundos
 
 document.addEventListener('DOMContentLoaded', function () {
   // Verifique se o usuário está logado
-  const usuario = JSON.parse(localStorage.getItem('usuario'));
+  const usuario_classement = JSON.parse(localStorage.getItem('usuario_classement'));
   const navbar_wellcome = document.getElementById("navbar_wellcome");
 
-  if (usuario) {
-    navbar_wellcome.innerHTML = `Olá ${usuario.nome}`
+  if (usuario_classement) {
+    navbar_wellcome.innerHTML = `Olá ${usuario_classement.nome}`
     // O usuário está logado e tem um nível de acesso válido
   } else {
     // O usuário não está logado ou tem um nível de acesso inválido
@@ -18,9 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Inicializa o temporizador quando a página é carregada
   reiniciarTemporizador();
-
-  // Adiciona eventos aos elementos relevantes nas páginas que exigem acesso elevado
-  // ...
 
   // Função chamada quando o usuário realiza alguma ação (por exemplo, clicar em um botão)
   function acaoDoUsuario() {
@@ -43,9 +40,13 @@ document.addEventListener('DOMContentLoaded', function () {
   // Função para logoff automático
   function logoffAutomatico() {
     // Limpe os dados do localStorage
-    localStorage.removeItem('usuario');
+    localStorage.removeItem('usuario_classement');
 
     // Redirecione para a página de login
-    window.location.href = '/Classement/Paginas/HomepageADM/login.html';
+    window.location.href = '/Classement';
   }
 });
+
+function logoff() {
+  localStorage.removeItem('usuario_classement');
+}
