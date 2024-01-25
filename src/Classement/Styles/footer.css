@@ -1,11 +1,13 @@
 
 footer {
+    text-align: center;
     width: 100%;
     margin: 0;
+    margin-top: 20vh;
     padding: 24px;
     box-shadow: 0px 0px 5px var(--sombra);
     background-color:  var(--container-transparente);
-    position: fixed;
+    position: relative;
     bottom: 0;
 }
   
@@ -22,4 +24,10 @@ footer {
     text-align: right;
     font-size: 11px;
     padding-right: 55px;
+}
+
+
+#footerAutor a {
+    text-decoration: none;
+    color: var(--texto);
 }
