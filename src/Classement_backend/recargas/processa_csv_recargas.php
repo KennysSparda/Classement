@@ -2,6 +2,7 @@
 // Adicione isso ao início do arquivo
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+include("./inserir_dados_recargas.php");
 
 // Verifica se a variável 'dataEscolhida' está presente no array $_POST
 if (isset($_POST['dataEscolhida'])) {
@@ -47,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dados = array();
 
     // Processa o arquivo CSV
-    $csvProcessado = processarCSV('csv', $dados);
+    $csvProcessado = processarCSV('csv_recargas', $dados);
 
     // Verifica se o arquivo foi processado com sucesso
     if ($csvProcessado) {
@@ -55,8 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<pre>";
         print_r($dados);
         echo "</pre>";
-
-        // Agora você pode manipular os dados conforme necessário
+        inserirDadosNoBanco($dados, $dataEscolhida);
     } else {
         echo "Erro ao processar o arquivo CSV.";
     }

@@ -24,41 +24,6 @@ section p {
     padding: 16px;
 }
 
-/* ############ SETORES ############ */
-
-
-section li.ListaSetores p {
-    flex: 1;
-    margin: 0;
-}
-
-section.lista_setores {
-    margin-top: 20px;
-}
-
-section li.ListaSetores {
-    list-style-image: url('/PainelCPD/src/image/setor.svg');
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid var(--cor-primaria);
-    border-radius: 10px;
-    box-shadow: 0 2px 4px var(--sombra);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-}
-
-section li.header-setores {
-    border: 1px solid var(--cor-secundaria);
-}
-
-section li.ListaSetores:hover {
-    box-shadow: 0 4px 8px var(--sombra);
-    background: var(--container-transparente);
-}
-
 /* ############ USUARIOS ############ */
 
 section.lista_usuarios {

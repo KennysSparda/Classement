@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="/Classement/Styles/cores.css">
     <link rel="stylesheet" href="/Classement/Styles/section.css">
     <link rel="stylesheet" href="/Classement/Styles/body.css">
+    <link rel="stylesheet" href="/Classement/Styles/metas.css">
     <link rel="stylesheet" href="/Classement/Styles/button.css">
+    <link rel="stylesheet" href="/Classement/Styles/input.css">
     <link rel="icon" href="/Classement/img/icon.png" type="image/svg+xml">
     <title>Classement</title>
 </head>
@@ -16,28 +18,34 @@
         <div class="navbar">
             <h1 class="title">Classement</h1>
             <h3 id="navbar_wellcome"></h3>
-            <a href="/Classement">Voltar</a>
+            <a href="/Classement/Paginas/HomepageADM">Voltar</a>
         </div>
     </header>
     <section>
-        <div class="container">
-            <div class="box b-float-left b-align-middle"></a>
-                <h2>PIX</h2>
-                <p>Meta PIX: 100 Reais</p>
-            </div>
-            <div class="box b-float-middle b-align-middle">
-                <h2>RECARGAS</h2>
-                <p>Meta RECARGAS: 50 Recargas</p>
-            </div>
-            <div class="box b-float-right b-align-middle">
-                <h2>NPS</h2>
-                <label for="nps">Meta NPS:</label><input placeholder="90 NPS" id="nps"> </input>
-            </div>
-        </div>
         <form action="/Classement_backend/pix/processa_csv_pix.php" method="post" enctype="multipart/form-data">
-            <label for="dataEscolhida">Selecione uma data: </label>
-            <input type="date" name="dataEscolhida" id="dataEscolhida" required>
-            <br>
+            <div class="container">
+                <div class="box b-float-left b-align-middle"></a>
+                    <h2>PIX</h2>
+                    <label for="pix">Meta PIX:</label>
+                    <input placeholder="1000 REAIS" name="pix" id="pix"> </input>
+                </div>
+                <div class="box b-float-middle b-align-middle">
+                    <h2>RECARGAS</h2>
+                    <label for="recargas">Meta RECARGAS: </label>
+                    <input placeholder="20 RECARGAS" name="recargas" id="recargas"> </input>
+                </div>
+                <div class="box b-float-right b-align-middle">
+                    <h2>NPS</h2>
+                    <label for="nps">Meta NPS: </label>
+                    <input placeholder="90 NPS" name="nps" id="nps"> </input>
+                </div>
+                <div class="box b-float-right b-align-middle">
+                <h2>DATA</h2>
+                    <label for="dataEscolhida">Selecione uma data: </label>
+                    <input type="date" name="dataEscolhida" id="dataEscolhida" required> </input>
+                </div>
+                <br>
+            </div>
             <button type="submit" onclick="excluirDadosDoDia()">Enviar</button>
         </form>
     </section>

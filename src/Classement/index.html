@@ -10,14 +10,39 @@
     <link rel="stylesheet" type="text/css" href="/Classement/Styles/section.css">
     <link rel="stylesheet" type="text/css" href="/Classement/Styles/button.css">
     <link rel="stylesheet" type="text/css" href="/Classement/Styles/footer.css">
+    <link rel="stylesheet" type="text/css" href="/Classement/Styles/navbar_home.css">
     <link rel="icon" href="/Classement/img/icon.png" type="image/svg+xml">
     <title>Classement</title>
 </head>
 <body>
     <header class="navbar-body">
+        <nav class="nav">
+            <input id="menu" type="checkbox">
+            <label for="menu">Menu</label>
+            <ul class="menu">
+                <li>
+                    <a onclick="toggleRanking()">
+                        <span>Pix</span>
+                        <i class="fas fa-address-card" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="toggleRanking()">
+                        <span>Recargas</span>
+                        <i class="fas fa-tasks" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="toggleRanking()">
+                        <span>NPS</span>
+                        <i class="fas fa-users" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
         <div class="navbar">
-            <img class="title" src="/Classement/img/logo_bg.png" style="height: 50px; width: 200px;"  alt="">
-            <a href="/Classement/Paginas/HomepageADM/login.html">Admin</a>
+            <img class="title" src="/Classement/img/logo_bg.png" alt="">
+            <a id="btn-admin" href="/Classement/Paginas/HomepageADM/login.html">Admin</a>
         </div>
     </header>
     <section id="pix">
@@ -74,11 +99,7 @@
                 </tr>
             </tfoot>
         </table>
-    </section>
-    <section id="recargas">
-
-    </section>
-    
+    </section>    
     <footer class="container" style="justify-content: end;">
         <div class="box b-float-middle b-align-middle">
             <p id="footerTitle">Atacadão Santa Felicidade - Filial 837</p>
@@ -92,6 +113,31 @@
             <p>Marco Antonio</p>
         </div>
     </footer>
+
+    <script>
+ document.addEventListener('DOMContentLoaded', function() {
+    var menuCheckbox = document.getElementById('menu');
+    var section = document.querySelector('section');
+
+    menuCheckbox.addEventListener('change', function() {
+      if (this.checked) {
+        section.classList.add('blur');
+      } else {
+        section.classList.remove('blur');
+      }
+    });
+
+    // Adicionando um ouvinte de evento para fechar o menu ao clicar em algum item
+    var menuItems = document.querySelectorAll('.menu li a');
+    menuItems.forEach(function(item) {
+      item.addEventListener('click', function() {
+        // Feche o menu quando um item for clicado
+        menuCheckbox.checked = false;
+        body.classList.remove('blur');
+      });
+    });
+  });
+    </script>
     <script src="Scripts/AtualizarRanking.js"></script>
 </body>
 </html>
