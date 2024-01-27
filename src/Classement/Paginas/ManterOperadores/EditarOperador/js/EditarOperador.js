@@ -3,7 +3,6 @@ function getDocumentIdFromURL() {
     return urlParams.get('matricula');
 }
 
-
 function preencherFormulario() {
     // Coleta os dados do formulário
     var matricula = getDocumentIdFromURL();

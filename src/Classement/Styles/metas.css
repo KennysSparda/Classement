@@ -1,0 +1,8 @@
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
+.input-container label {
+    margin-right: 10px; /* Ajuste a margem conforme necessário */
+}

@@ -2,12 +2,11 @@
 footer {
     text-align: center;
     width: 100%;
-    margin: 0;
-    margin-top: 20vh;
     padding: 24px;
     box-shadow: 0px 0px 5px var(--sombra);
     background-color:  var(--container-transparente);
     position: relative;
+    margin-top: 30vh;
     bottom: 0;
 }
   

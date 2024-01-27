@@ -1,15 +1,16 @@
 document.getElementById("formTrocarSenha").addEventListener("submit", function(event) {
     event.preventDefault(); // Evita recarregar a página no envio padrão do formulário
 
-    let usuario = JSON.parse(localStorage.getItem('usuario'))
+    let usuario_classement = JSON.parse(localStorage.getItem('usuario_classement'))
     // Coleta os dados do formulário
-    var matricula = usuario.matricula
+    var matricula = usuario_classement.matricula
     var senha = document.getElementById("input_senha").value;
+    var confirmacao_senha = document.getElementById("input_confirmacao_senha").value;
     // Realize as verificações
-    if (senha.length >= 8) {
+    if (senha.length >= 8 && senha === confirmacao_senha) {
         sendFormData(matricula, senha);
     } else {
-        displayErrorMessage("Verifique os dados inseridos: Senha com pelo menos 8 caracteres.");
+        displayErrorMessage("Verifique os dados inseridos: Senha menor que 8 caracteres ou confirmação de senha não confere");
     }
 });
 

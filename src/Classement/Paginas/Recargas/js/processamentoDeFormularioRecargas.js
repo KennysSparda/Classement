@@ -21,6 +21,6 @@ document.getElementById("formRecargas").addEventListener("submit", function(e) {
     })
     .catch(function(error) {
         // Exiba uma mensagem de erro em caso de falha na requisição
-        alert("Houve um problema ao processar a solicitação.");
+        alert("Houve um problema ao processar a solicitação.", error);
     });
 });

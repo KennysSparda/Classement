@@ -168,21 +168,21 @@
         <div class="container">
             <div class="box b-align-left b-float-left" style="width: auto;">
                 <label>
-                    <input type="radio" name="tipoPesquisaNPS" value="simples" checked onchange="togglePesquisaForm()"> Pesquisa Simples
+                    <input type="radio" name="tipoPesquisaNPS" value="simples" checked onchange="togglePesquisaFormNPS()"> Pesquisa Simples
                 </label>
                 <label>
-                    <input type="radio" name="tipoPesquisaNPS" value="avancada" onchange="togglePesquisaForm()"> Pesquisa Avançada
+                    <input type="radio" name="tipoPesquisaNPS" value="avancada" onchange="togglePesquisaFormNPS()"> Pesquisa Avançada
                 </label>
             </div>
             <div id="pesquisaSimplesNPS" class="box b-align-right b-float-right">
-                <label for="dataSelecionada">Data</label>
-                <input type="date" id="dataSelecionada" />
+                <label for="dataSelecionadaNPS">Data</label>
+                <input type="date" id="dataSelecionadaNPS" />
             </div>
             <div id="pesquisaAvancadaNPS" style="display: none; width: auto;"  class="box b-align-right b-float-right">
                 <label>Data Inicial:</label>
-                <input type="date" id="dataSelecionada1" />
+                <input type="date" id="dataSelecionadaNPS1" />
                 <label>Data Final:</label>
-                <input type="date" id="dataSelecionada2" />
+                <input type="date" id="dataSelecionadaNPS2" />
             </div>
         </div>
         <table id="tabelaNPS">
@@ -203,15 +203,15 @@
             <tfoot>
                 <tr>
                     <th colspan="3">Total</span></th>
-                    <th id="qntdTotal"></th>
+                    <th id="qntdTotalNPS"></th>
                 </tr>
                 <tr>
                     <th colspan="3">Meta atual</span></th>
-                    <th id="metaQuantidade"></th>
+                    <th id="metaQuantidadeNPS"></th>
                 </tr>
                 <tr>
                     <th colspan="3">Restante</span></th>
-                    <th id="restanteQuantidade"></th>
+                    <th id="restanteQuantidadeNPS"></th>
                 </tr>
             </tfoot>
         </table>

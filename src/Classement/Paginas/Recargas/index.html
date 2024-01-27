@@ -21,16 +21,21 @@
         </div>
     </header>
     <section>
-        <h2>Atualizar ranking recargas</h2>
-        <form id="formRecargas" action="/Classement_backend/recargas/processa_csv_recargas.php" method="post" enctype="multipart/form-data">
-            <label for="dataEscolhida">Selecione uma data: </label>
-            <input type="date" name="dataEscolhida" id="dataEscolhida" required>
-            <br>
-            <label for="csv">Escolha o arquivo CSV de recargas:</label>
-            <input type="file" name="csv_recargas" id="csv" accept=".csv" required>
-            <br>
-            <button type="submit" onclick="excluirDadosDoDia()">Enviar</button>
-        </form>
+        <h2 style="text-align: center;">Atualizar ranking recargas</h2>
+        <div class="container" style="justify-content: center; width: 50%; margin: auto; text-align: center; ">
+            <form id="formRecargas" action="/Classement_backend/recargas/processa_csv_recargas.php" method="post" enctype="multipart/form-data">
+                <div class="box b-float-left b-align-right" style="width: 50%; display: flex; flex-direction: column;">
+                    <label for="dataEscolhida">Selecione uma data: </label>
+                    <br>
+                    <label for="csv">Escolha o arquivo CSV de recargas:</label>
+                </div>
+                <div class="box b-float-left b-align-left" style="align-items: flex-start; width: 50%; display: flex ;flex-direction: column;">
+                    <input type="date" name="dataEscolhida" id="dataEscolhida" required>
+                    <input type="file" name="csv_recargas" id="csv" accept=".csv" required>
+                </div>
+                <button type="submit" onclick="excluirDadosDoDia()">Enviar</button>
+            </form>
+        </div>
     </section>
     <section>
         <h2>Como fazer?</h2>

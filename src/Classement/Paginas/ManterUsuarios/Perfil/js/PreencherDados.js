@@ -1,13 +1,13 @@
 function preencherFormulario() {
     // Coleta os dados do formulário
-    let usuario = JSON.parse(localStorage.getItem('usuario'))
-    var matricula = usuario.matricula
+    let usuario_classement = JSON.parse(localStorage.getItem('usuario_classement'))
+    var matricula = usuario_classement.matricula
 
     var formData = new FormData();
     formData.append("matricula", matricula);
     
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/PainelCPD/src/Backend/ManterUsuarios/buscar_usuario.php", true);
+    xhr.open("POST", "/Classement_backend/ManterUsuarios/buscar_usuario.php", true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
@@ -24,7 +24,6 @@ function preencherFormulario() {
                             break;
                         }
                     }
-                    document.getElementById("input_acesso").value = userData.usuario.nivel_acesso;
                 } else {
                     alert("Usuário não encontrado.");
                 }
@@ -36,24 +35,7 @@ function preencherFormulario() {
     xhr.send(formData);
 };
 
-// Função para buscar os setores do servidor PHP
-function carregarSetores() {
-    fetch('/PainelCPD/src/Backend/ManterSetores/obter_setores.php')
-    .then(response => response.json())
-    .then(data => {
-        const selectElement = document.getElementById("input_setor");
-        data.forEach(setor => {
-            const option = document.createElement("option");
-            option.text = setor.nome;
-            option.value = setor.id_setor;
-            selectElement.appendChild(option);
-        });
-    })
-    .catch(error => console.error('Erro ao buscar setores:', error));
-}
-
 // Chama a função para carregar o usuario ao carregar a página
 document.addEventListener("DOMContentLoaded", async function() {
-    await carregarSetores();
     preencherFormulario();
 });

@@ -56,6 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const dataSelecionadaInputRecargas = document.getElementById('dataSelecionadaRecargas');
     const dataSelecionadaInputRecargas1 = document.getElementById('dataSelecionadaRecargas1');
     const dataSelecionadaInputRecargas2 = document.getElementById('dataSelecionadaRecargas2');
+    const dataSelecionadaInputNPS = document.getElementById('dataSelecionadaNPS');
+    const dataSelecionadaInputNPS1 = document.getElementById('dataSelecionadaNPS1');
+    const dataSelecionadaInputNPS2 = document.getElementById('dataSelecionadaNPS2');
 
     // Criamos uma nova data representando a data atual
     const dataAtual = new Date();
@@ -70,6 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
     dataSelecionadaInputRecargas.value = dataFormatada;
     dataSelecionadaInputRecargas1.value = dataFormatada;
     dataSelecionadaInputRecargas2.value = dataFormatada;
+    dataSelecionadaInputNPS.value = dataFormatada;
+    dataSelecionadaInputNPS1.value = dataFormatada;
+    dataSelecionadaInputNPS2.value = dataFormatada;
 
     // Chamamos a função para atualizar a tabela
     atualizarTabelaPix();
@@ -237,27 +243,99 @@ function togglePesquisaFormRecargas() {
     }
 }
 
-function toggleRanking(event) {
-    const targetLi = event.target.closest('li');
-    if (!targetLi) return;
 
-    const rankingSelecionado = targetLi.dataset.rank;
+function atualizarTabelaNPS() {
+    const dataSelecionada = document.getElementById('dataSelecionadaNPS').value;
+    const url = `/Classement_backend/nps/exibir_dados_nps.php?data=${dataSelecionada}`;
 
-    const sectionPix = document.getElementById("pix");
-    const sectionRecargas = document.getElementById("recargas");    
-    const sectionNPS = document.getElementById("NPS");
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const tabelaNPS = document.getElementById('tabelaNPS').getElementsByTagName('tbody')[0];
+            tabelaNPS.innerHTML = ""; // Limpa o conteúdo atual da tabela
+            let quantidadeTotalNPS = 0;
 
-    if (rankingSelecionado === 'pix') {
-        sectionPix.style.display = 'block';
-        sectionRecargas.style.display = 'none';
-        sectionNPS.style.display = 'none';
-    } else if (rankingSelecionado === 'recargas') {
-        sectionPix.style.display = 'none';
-        sectionRecargas.style.display = 'block';
-        sectionNPS.style.display = 'none';
+            // Adiciona as novas linhas à tabela
+            data.forEach((row, index) => {
+                const newRow = tabelaNPS.insertRow();
+                newRow.insertCell(0).textContent = (index + 1).toString() + "º";
+                newRow.insertCell(1).textContent = row.operador;
+                newRow.insertCell(2).textContent = row.nome_operador;
+
+                const quantidade = parseInt(row.quantidade, 10);
+                newRow.insertCell(3).textContent = quantidade;
+
+                // Atualiza os totais
+                quantidadeTotalNPS += quantidade;
+            });
+            // Atualiza a quantidade total no tfoot
+            document.getElementById('qntdTotalNPS').textContent = quantidadeTotalNPS;
+        })
+        .catch(error => console.error('Erro ao buscar dados:', error));
+}
+
+// Função para ser chamada quando a data é alterada
+function dataSelecionadaAlteradaNPS() {
+    atualizarTabelaNPS();
+}
+
+// Função para ser chamada quando a data é alterada
+function dataSelecionadaAlteradaPesquisaAvancadaNPS() {
+    pesquisaAvancadaNPS();
+}
+
+// Adiciona um ouvinte de evento para detectar a alteração no input
+document.getElementById('dataSelecionadaNPS').addEventListener('change', dataSelecionadaAlteradaNPS);
+document.getElementById('dataSelecionadaNPS1').addEventListener('change', dataSelecionadaAlteradaPesquisaAvancadaNPS);
+document.getElementById('dataSelecionadaNPS2').addEventListener('change', dataSelecionadaAlteradaPesquisaAvancadaNPS);
+
+function pesquisaAvancadaNPS() {
+    const dataSelecionada1 = document.getElementById('dataSelecionadaNPS1').value;
+    const dataSelecionada2 = document.getElementById('dataSelecionadaNPS2').value;
+
+    if (dataSelecionada2) {
+        const url = `/Classement_backend/nps/pesquisa_avancada_nps.php?data_inicial=${dataSelecionada1}&data_final=${dataSelecionada2}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const tabelaNPS = document.getElementById('tabelaNPS').getElementsByTagName('tbody')[0];
+                tabelaNPS.innerHTML = "";
+                let quantidadeTotalNPS = 0;
+
+                data.forEach((row, index) => {
+                    const newRow = tabelaNPS.insertRow();
+                    newRow.insertCell(0).textContent = (index + 1).toString() + "º";
+                    newRow.insertCell(1).textContent = row.operador;
+                    newRow.insertCell(2).textContent = row.nome_operador;
+
+                    const quantidade = parseInt(row.quantidade, 10);
+                    newRow.insertCell(3).textContent = quantidade;
+    
+                    // Atualiza os totais
+                    quantidadeTotalNPS += quantidade;
+                });
+                // Atualiza a quantidade total no tfoot
+                document.getElementById('qntdTotalNPS').textContent = quantidadeTotalNPS;
+            })
+            .catch(error => console.error('Erro ao buscar dados:', error));
     } else {
-        sectionPix.style.display = 'none';
-        sectionRecargas.style.display = 'none';
-        sectionNPS.style.display = 'block';
+        alert('Selecione ambas as datas para a pesquisa avançada.');
+    }
+}
+
+function togglePesquisaFormNPS() {
+    const pesquisaSimplesNPS = document.getElementById('pesquisaSimplesNPS');
+    const pesquisaAvancadaNPS = document.getElementById('pesquisaAvancadaNPS');
+    const tipoPesquisa = document.querySelector('input[name="tipoPesquisaNPS"]:checked').value;
+
+    if (tipoPesquisa === 'simples') {
+        pesquisaSimplesNPS.style.display = 'block';
+        pesquisaAvancadaNPS.style.display = 'none';
+        dataSelecionadaAlteradaNPS();
+    } else {
+        pesquisaSimplesNPS.style.display = 'none';
+        pesquisaAvancadaNPS.style.display = 'block';
+        dataSelecionadaAlteradaPesquisaAvancadaNPS();
     }
 }

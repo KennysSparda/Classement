@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Classement/Styles/cores.css">
+    <link rel="stylesheet" href="/Classement/Styles/body.css">
+    <link rel="stylesheet" href="/Classement/Styles/button.css">
+    <link rel="stylesheet" href="/Classement/Styles/input.css">
+    <link rel="stylesheet" href="/Classement/Styles/navbar.css">
+    <link rel="stylesheet" href="/Classement/Styles/section.css">
+    <link rel="icon" href="/Classement/img/icon.png" type="image/svg+xml">
+    <title>Classement</title>
+</head>
+<body>
+    <header class="navbar-body">
+        <div class="navbar">
+            <h1 class="title">Classement</h1>
+            <h3 id="navbar_wellcome"></h3>
+            <a href="/Classement/Paginas/HomepageADM">Voltar</a>
+        </div>
+    </header>
+    <section>
+        <div class="container" style="flex-direction: column; justify-content: center;">
+            <h2>Atualizar ranking NPS</h2>
+            <form id="formBuscarUsuario">
+            <label for="input_matricula" class="box b-float-left b-align-right">Matricula</label>
+            <input type="number" id="input_matricula" required class="box b-float-left b-align-left"></input>
+            <button id="btn-buscar-operador" type="submit">Buscar</button>
+            </form>
+            <form id="formPesquisaNPS">
+            <label for="input_data" class="box b-float-left b-align-right">Data</label>
+            <input type="date" name="dataEscolhida" id="dataEscolhida" required class="box b-float-left b-align-left">
+            <br>
+            <label for="input_nome" class="box b-float-left b-align-right">Nome</label>
+            <input type="text" id="input_nome" required class="box b-float-left b-align-left"></input>
+            <br>
+            <label for="input_quantidade_NPS" class="box b-float-left b-align-right">Quantidade Pesquisas</label>
+            <input type="number" id="input_quantidade_NPS" required class="box b-float-left b-align-left"></input>
+            <br>
+            <button id="btn-salvar" type="submit" onclick="excluirDadosDoDia()" style="display: none;">Salvar</button>
+            </form>
+        </div>
+    </section>
+    <script src="js/buscarOperador.js"></script>
+    <script src="js/enviaDadosNPS.js"></script>
+    <script src="js/zerarDadosDoDiaPix.js"></script>
+    <script src="/Classement/Scripts/VerificarLogin.js"></script>
+</body>
+</html>

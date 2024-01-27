@@ -24,3 +24,29 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   });
+
+  
+function toggleRanking(event) {
+  const targetLi = event.target.closest('li');
+  if (!targetLi) return;
+
+  const rankingSelecionado = targetLi.dataset.rank;
+
+  const sectionPix = document.getElementById("pix");
+  const sectionRecargas = document.getElementById("recargas");    
+  const sectionNPS = document.getElementById("NPS");
+
+  if (rankingSelecionado === 'pix') {
+      sectionPix.style.display = 'block';
+      sectionRecargas.style.display = 'none';
+      sectionNPS.style.display = 'none';
+  } else if (rankingSelecionado === 'recargas') {
+      sectionPix.style.display = 'none';
+      sectionRecargas.style.display = 'block';
+      sectionNPS.style.display = 'none';
+  } else {
+      sectionPix.style.display = 'none';
+      sectionRecargas.style.display = 'none';
+      sectionNPS.style.display = 'block';
+  }
+}

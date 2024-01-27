@@ -21,30 +21,33 @@
             <a href="/Classement/Paginas/HomepageADM">Voltar</a>
         </div>
     </header>
-    <section>
-        <form action="/Classement_backend/pix/processa_csv_pix.php" method="post" enctype="multipart/form-data">
+    <section style="text-align: center;">
+        
+        <h1 style="margin: 24px ;">Metas</h1>
+        <form id="formInserirMeta">
             <div class="container">
-                <div class="box b-float-left b-align-middle"></a>
-                    <h2>PIX</h2>
-                    <label for="pix">Meta PIX:</label>
-                    <input placeholder="1000 REAIS" name="pix" id="pix"> </input>
+                <div class="box b-float-left b-align-middle">    
+                    <label for="pix">PIX:</label>
+                    <input required placeholder="15" name="pix" id="pix">
                 </div>
-                <div class="box b-float-middle b-align-middle">
-                    <h2>RECARGAS</h2>
-                    <label for="recargas">Meta RECARGAS: </label>
-                    <input placeholder="20 RECARGAS" name="recargas" id="recargas"> </input>
+            
+                <div class="box b-float-middle b-align-middle">   
+                    <div class="input-container">
+                        <label for="recargas">RECARGAS:</label>
+                        <input required placeholder="15" name="recargas" id="recargas">
+                    </div>
                 </div>
+            
                 <div class="box b-float-right b-align-middle">
-                    <h2>NPS</h2>
-                    <label for="nps">Meta NPS: </label>
-                    <input placeholder="90 NPS" name="nps" id="nps"> </input>
+                    <label for="nps">NPS:</label>
+                    <input required placeholder="15" name="nps" id="nps">
                 </div>
+            
                 <div class="box b-float-right b-align-middle">
-                <h2>DATA</h2>
-                    <label for="dataEscolhida">Selecione uma data: </label>
-                    <input type="date" name="dataEscolhida" id="dataEscolhida" required> </input>
+                    <label for="dataEscolhida">Selecione uma data:</label>
+                    <input type="date" name="dataEscolhida" id="dataEscolhida" required>
                 </div>
-                <br>
+
             </div>
             <button type="submit" onclick="excluirDadosDoDia()">Enviar</button>
         </form>
