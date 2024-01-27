@@ -1,7 +1,7 @@
 // Variáveis globais
 let inatividadeTimeout; // Identificador do temporizador
-// const TEMPO_INATIVIDADE = 15 * 60 * 1000; // 15 minutos em milissegundos
-const TEMPO_INATIVIDADE = 5 * 1000; // 2 segundos em milissegundos (TESTES)
+const TEMPO_INATIVIDADE = 10 * 60 * 1000; // 15 minutos em milissegundos
+// const TEMPO_INATIVIDADE = 5 * 1000; // 2 segundos em milissegundos (TESTES)
 
 document.addEventListener('DOMContentLoaded', function () {
   // Verifique se o usuário está logado
@@ -9,11 +9,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const navbar_wellcome = document.getElementById("navbar_wellcome");
 
   if (usuario_classement || window.location.href != '/Classement' || window.location.href != '/Classement/Paginas/HomepageADM/login.html') {
-    navbar_wellcome.innerHTML = `Olá ${usuario_classement.nome}`
+    if (window.location.href != 'https://srvsave837/Classement/') {
+      navbar_wellcome.innerHTML = `Olá ${usuario_classement.nome}`
+    }
     // O usuário está logado e tem um nível de acesso válido
   } else {
-    // O usuário não está logado ou tem um nível de acesso inválido
-    // Redirecionar para uma página de erro ou página de login
+    // O usuário não está logado
+    // Redirecionar para uma página de acesso negado
     window.location.href = '/Classement/Paginas/AcessoNegado/';
   }
 
@@ -43,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Limpe os dados do localStorage
     localStorage.removeItem('usuario_classement');
 
-    // Redirecione para a página de login
+    // Redirecione para a página inicial
     window.location.href = '/Classement';
   }
 });

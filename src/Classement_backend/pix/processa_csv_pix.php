@@ -48,11 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Verifica se ambos os arquivos foram processados com sucesso
     if ($csvQuantidadeProcessado && $csvValorProcessado) {
         // Exibe os dados processados
-        echo "<pre>";
-        print_r($dados);
-        echo "</pre>";
         inserirDadosNoBanco($dados, $dataEscolhida);
-
         // Agora você pode manipular os dados conforme necessário
     } else {
         echo "Erro ao processar os arquivos CSV.";

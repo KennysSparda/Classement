@@ -22,14 +22,14 @@
     </header>
     <section>
         <h2>Atualizar ranking recargas</h2>
-        <form action="/Classement_backend/recargas/processa_csv_recargas.php" method="post" enctype="multipart/form-data">
+        <form id="formRecargas" action="/Classement_backend/recargas/processa_csv_recargas.php" method="post" enctype="multipart/form-data">
             <label for="dataEscolhida">Selecione uma data: </label>
             <input type="date" name="dataEscolhida" id="dataEscolhida" required>
             <br>
             <label for="csv">Escolha o arquivo CSV de recargas:</label>
             <input type="file" name="csv_recargas" id="csv" accept=".csv" required>
             <br>
-            <button type="submit">Enviar</button>
+            <button type="submit" onclick="excluirDadosDoDia()">Enviar</button>
         </form>
     </section>
     <section>
@@ -37,7 +37,8 @@
         <h4>Procedimento para gerar CSV de Recargas</h4>
         <p>Gerar os dois arquivos através do SITEF -> Consultas Sitef Customizadas -> Em "Dados" selecione "OPERADOR" -> Em "Agregar" selecione Quantidade -> Em "Estados" selecione Efetuada PDV -> Em "Tipo" selecione PIX</p>
     </section>
-
+    <script src="js/processamentoDeFormularioRecargas.js"></script>
+    <script src="js/zerarDadosDoDiaRecargas.js"></script>
     <script src="/Classement/Scripts/VerificarLogin.js"></script>
 </body>
 </html>

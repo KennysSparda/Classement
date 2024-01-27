@@ -53,9 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Verifica se o arquivo foi processado com sucesso
     if ($csvProcessado) {
         // Exibe os dados processados
-        echo "<pre>";
-        print_r($dados);
-        echo "</pre>";
         inserirDadosNoBanco($dados, $dataEscolhida);
     } else {
         echo "Erro ao processar o arquivo CSV.";
