@@ -49,14 +49,14 @@ a {
   font-size: 16px;
   cursor: pointer;
   z-index: 1;
-  background: var(--cor-primaria);
+  /* background: var(--cor-primaria); */
   border-radius: 50%;
   transform: translateY(-50%);
   transition: all 0.2s;
 }
 
 .nav [type="checkbox"] + label:hover {
-  background: var(--cor-secundaria);
+  /* background: var(--cor-secundaria); */
 }
 
 .menu li {
@@ -65,6 +65,11 @@ a {
   left: 50%;
   transform: translateX(-50%);
   transition: all 0.4s;
+
+}
+
+.menu li #img-btn-menu {
+  display: none;
 }
 
 .menu li:nth-child(1) {
@@ -82,11 +87,9 @@ a {
 .menu li a {
   width: 50px;
   height: 50px;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--cor-primaria);
 }
 
 .menu li a span {
@@ -94,7 +97,7 @@ a {
   top: 0;
   left: 0;
   transform: translateX(calc(+110%)) translateY(calc(+75%));
-  
+
   width: 100%;
   font-size: 13px;
   pointer-events: none;
@@ -111,16 +114,40 @@ a {
 .nav input:checked ~ .menu li:nth-child(1) {
   top: +75px;
   transition-delay: 0.1s;
+  background: var(--cor-primaria);
+  border-radius: 50%;
+
 }
 
 .nav input:checked ~ .menu li:nth-child(2) {
   top: +150px;
   transition-delay: 0.2s;
+  background: var(--cor-primaria);
+  border-radius: 50%;
+
 }
 
 .nav input:checked ~ .menu li:nth-child(3) {
   top: +225px;
   transition-delay: 0.3s;
+  background: var(--cor-primaria);
+  border-radius: 50%;
+
+}
+
+.nav input:checked ~ .menu li:nth-child(1) #img-btn-menu {
+  display: block;
+
+}
+
+.nav input:checked ~ .menu li:nth-child(2) #img-btn-menu {
+  display: block;
+
+}
+
+.nav input:checked ~ .menu li:nth-child(3) #img-btn-menu {
+  display: block;
+
 }
 
 .nav input:checked ~ .menu li a span {
@@ -140,11 +167,12 @@ a {
 }
 
 .title {
-    height: 75px; 
-    width: 300px;
-    margin-bottom: 10px;
+    height: 50px; 
+    width: 200px;
+    margin-bottom: 5px;
 }
 
 #btn-admin {
     margin-left: auto;
 }
+

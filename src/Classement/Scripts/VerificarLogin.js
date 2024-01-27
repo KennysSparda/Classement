@@ -1,13 +1,14 @@
 // Variáveis globais
 let inatividadeTimeout; // Identificador do temporizador
-const TEMPO_INATIVIDADE = 15 * 60 * 1000; // 15 minutos em milissegundos
+// const TEMPO_INATIVIDADE = 15 * 60 * 1000; // 15 minutos em milissegundos
+const TEMPO_INATIVIDADE = 5 * 1000; // 2 segundos em milissegundos (TESTES)
 
 document.addEventListener('DOMContentLoaded', function () {
   // Verifique se o usuário está logado
   const usuario_classement = JSON.parse(localStorage.getItem('usuario_classement'));
   const navbar_wellcome = document.getElementById("navbar_wellcome");
 
-  if (usuario_classement) {
+  if (usuario_classement || window.location.href != '/Classement' || window.location.href != '/Classement/Paginas/HomepageADM/login.html') {
     navbar_wellcome.innerHTML = `Olá ${usuario_classement.nome}`
     // O usuário está logado e tem um nível de acesso válido
   } else {

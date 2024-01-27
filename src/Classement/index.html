@@ -18,22 +18,26 @@
     <header class="navbar-body">
         <nav class="nav">
             <input id="menu" type="checkbox">
-            <label for="menu">Menu</label>
+            <label for="menu"><img src="/Classement/img/menu.png">
+            </label>
             <ul class="menu">
-                <li>
-                    <a onclick="toggleRanking()">
+                <li data-rank="pix">
+                    <a onclick="toggleRanking(event)">
+                        <img src="/Classement/img/pix.png" id="img-btn-menu" alt="Pix" width="30px" height="30px">
                         <span>Pix</span>
                         <i class="fas fa-address-card" aria-hidden="true"></i>
                     </a>
                 </li>
-                <li>
-                    <a onclick="toggleRanking()">
+                <li data-rank="recargas">
+                    <a onclick="toggleRanking(event)">
+                        <img src="/Classement/img/recargas.png" id="img-btn-menu" alt="Recargas" width="30px" height="30px">
                         <span>Recargas</span>
                         <i class="fas fa-tasks" aria-hidden="true"></i>
                     </a>
                 </li>
-                <li>
-                    <a onclick="toggleRanking()">
+                <li data-rank="nps">
+                    <a onclick="toggleRanking(event)">
+                        <img src="/Classement/img/NPS.png" id="img-btn-menu" alt="Recargas" width="40px" height="40px">
                         <span>NPS</span>
                         <i class="fas fa-users" aria-hidden="true"></i>
                     </a>
@@ -42,28 +46,30 @@
         </nav>
         <div class="navbar">
             <img class="title" src="/Classement/img/logo_bg.png" alt="">
-            <a id="btn-admin" href="/Classement/Paginas/HomepageADM/login.html">Admin</a>
+            <a id="btn-admin" href="/Classement/Paginas/HomepageADM/login.html"><img src="/Classement/img/admin.png" alt="" width="50px" height="50px"></a>
         </div>
     </header>
     <section id="pix">
-        <div class="container"></div>
-        <div class="box b-align-left b-float-left" style="width: auto;">
-            <label>
-                <input type="radio" name="tipoPesquisa" value="simples" checked onchange="togglePesquisaForm()"> Pesquisa Simples
-            </label>
-            <label>
-                <input type="radio" name="tipoPesquisa" value="avancada" onchange="togglePesquisaForm()"> Pesquisa Avançada
-            </label>
-        </div>
-        <div id="pesquisaSimples" class="box b-align-right b-float-right">
-            <label for="dataSelecionada">Data</label>
-            <input type="date" id="dataSelecionada" />
-        </div>
-        <div id="pesquisaAvancada" style="display: none; width: auto;"  class="box b-align-right b-float-right">
-            <label>Data Inicial:</label>
-            <input type="date" id="dataSelecionada1" />
-            <label>Data Final:</label>
-            <input type="date" id="dataSelecionada2" />
+        <h1>PIX</h1>
+        <div class="container">
+            <div class="box b-align-left b-float-left" style="width: auto;">
+                <label>
+                    <input type="radio" name="tipoPesquisaPix" value="simples" checked onchange="togglePesquisaFormPix()"> Pesquisa Simples
+                </label>
+                <label>
+                    <input type="radio" name="tipoPesquisaPix" value="avancada" onchange="togglePesquisaFormPix()"> Pesquisa Avançada
+                </label>
+            </div>
+            <div id="pesquisaSimplesPix" class="box b-align-right b-float-right">
+                <label for="dataSelecionadaPix">Data</label>
+                <input type="date" id="dataSelecionadaPix" />
+            </div>
+            <div id="pesquisaAvancadaPix" style="display: none; width: auto;"  class="box b-align-right b-float-right">
+                <label>Data Inicial:</label>
+                <input type="date" id="dataSelecionadaPix1" />
+                <label>Data Final:</label>
+                <input type="date" id="dataSelecionadaPix2" />
+            </div>
         </div>
         <table id="tabelaPix">
             <thead>
@@ -99,7 +105,117 @@
                 </tr>
             </tfoot>
         </table>
-    </section>    
+    </section>  
+    <section id="recargas" style="display: none;">
+        <h1>Recargas</h1>
+        <div class="container">
+            <div class="box b-align-left b-float-left" style="width: auto;">
+                <label>
+                    <input type="radio" name="tipoPesquisaRecargas" value="simples" checked onchange="togglePesquisaFormRecargas()"> Pesquisa Simples
+                </label>
+                <label>
+                    <input type="radio" name="tipoPesquisaRecargas" value="avancada" onchange="togglePesquisaFormRecargas()"> Pesquisa Avançada
+                </label>
+            </div>
+            <div id="pesquisaSimplesRecargas" class="box b-align-right b-float-right">
+                <label for="dataSelecionadaRecargas">Data</label>
+                <input type="date" id="dataSelecionadaRecargas" />
+            </div>
+            <div id="pesquisaAvancadaRecargas" style="display: none; width: auto;"  class="box b-align-right b-float-right">
+                <label>Data Inicial:</label>
+                <input type="date" id="dataSelecionadaRecargas1" />
+                <label>Data Final:</label>
+                <input type="date" id="dataSelecionadaRecargas2" />
+            </div>
+        </div>
+        <table id="tabelaRecargas">
+            <thead>
+                <tr>
+                    <th colspan="5">Ranking Recargas</span></th>
+                </tr>
+                <tr>
+                    <th>Posição</th>
+                    <th>Matricula</th>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Transações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Linhas da tabela serão adicionadas dinamicamente aqui -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="3">Total</span></th>
+                    <th id="valorTotal"></th>
+                    <th id="qntdTotal"></th>
+                </tr>
+                <tr>
+                    <th colspan="3">Meta atual</span></th>
+                    <th id="metaValor"></th>
+                    <th id="metaQuantidade"></th>
+                </tr>
+                <tr>
+                    <th colspan="3">Restante</span></th>
+                    <th id="restanteValor"></th>
+                    <th id="restanteQuantidade"></th>
+                </tr>
+            </tfoot>
+        </table>
+    </section>  
+    <section id="NPS" style="display: none;">
+        <h1>NPS</h1>
+        <div class="container">
+            <div class="box b-align-left b-float-left" style="width: auto;">
+                <label>
+                    <input type="radio" name="tipoPesquisaNPS" value="simples" checked onchange="togglePesquisaForm()"> Pesquisa Simples
+                </label>
+                <label>
+                    <input type="radio" name="tipoPesquisaNPS" value="avancada" onchange="togglePesquisaForm()"> Pesquisa Avançada
+                </label>
+            </div>
+            <div id="pesquisaSimplesNPS" class="box b-align-right b-float-right">
+                <label for="dataSelecionada">Data</label>
+                <input type="date" id="dataSelecionada" />
+            </div>
+            <div id="pesquisaAvancadaNPS" style="display: none; width: auto;"  class="box b-align-right b-float-right">
+                <label>Data Inicial:</label>
+                <input type="date" id="dataSelecionada1" />
+                <label>Data Final:</label>
+                <input type="date" id="dataSelecionada2" />
+            </div>
+        </div>
+        <table id="tabelaNPS">
+            <thead>
+                <tr>
+                    <th colspan="4">Ranking NPS</span></th>
+                </tr>
+                <tr>
+                    <th>Posição</th>
+                    <th>Matricula</th>
+                    <th>Nome</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Linhas da tabela serão adicionadas dinamicamente aqui -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="3">Total</span></th>
+                    <th id="qntdTotal"></th>
+                </tr>
+                <tr>
+                    <th colspan="3">Meta atual</span></th>
+                    <th id="metaQuantidade"></th>
+                </tr>
+                <tr>
+                    <th colspan="3">Restante</span></th>
+                    <th id="restanteQuantidade"></th>
+                </tr>
+            </tfoot>
+        </table>
+    </section>
     <footer class="container" style="justify-content: end;">
         <div class="box b-float-middle b-align-middle">
             <p id="footerTitle">Atacadão Santa Felicidade - Filial 837</p>
@@ -113,31 +229,7 @@
             <p>Marco Antonio</p>
         </div>
     </footer>
-
-    <script>
- document.addEventListener('DOMContentLoaded', function() {
-    var menuCheckbox = document.getElementById('menu');
-    var section = document.querySelector('section');
-
-    menuCheckbox.addEventListener('change', function() {
-      if (this.checked) {
-        section.classList.add('blur');
-      } else {
-        section.classList.remove('blur');
-      }
-    });
-
-    // Adicionando um ouvinte de evento para fechar o menu ao clicar em algum item
-    var menuItems = document.querySelectorAll('.menu li a');
-    menuItems.forEach(function(item) {
-      item.addEventListener('click', function() {
-        // Feche o menu quando um item for clicado
-        menuCheckbox.checked = false;
-        body.classList.remove('blur');
-      });
-    });
-  });
-    </script>
+    <script src="Scripts/AnimacaoMenu.js"></script>
     <script src="Scripts/AtualizarRanking.js"></script>
 </body>
 </html>
