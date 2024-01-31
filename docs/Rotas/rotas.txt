@@ -1,9 +1,0 @@
-Página Inicial
-|_login
-  |_Página Administrador
-    |_Manter Operadores
-    |_Manter Usuários Administradores
-    |_Pix
-    |_Recargas
-    |_NPS
-    |_Metas
