@@ -17,7 +17,7 @@ if (isset($_GET['data'])) {
         WHERE
             DATE(td.data) = '$dataFiltrada'
         ORDER BY
-        td.quantidade_recargas DESC";
+        td.valor_recargas DESC";
 
     $result = $conexao->query($sql);
 

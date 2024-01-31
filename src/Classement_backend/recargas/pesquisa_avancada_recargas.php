@@ -21,7 +21,7 @@ if (isset($_GET['data_inicial']) && isset($_GET['data_final'])) {
             GROUP BY
                 nome_operador
             ORDER BY
-                transacoes DESC";
+                valor DESC";
 
     $result = $conexao->query($sql);
 

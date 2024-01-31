@@ -21,37 +21,62 @@
             <a href="/Classement/Paginas/HomepageADM">Voltar</a>
         </div>
     </header>
+
     <section style="text-align: center;">
-        
-        <h1 style="margin: 24px ;">Metas</h1>
-        <form id="formInserirMeta">
-            <div class="container">
-                <div class="box b-float-left b-align-middle">    
-                    <label for="pix">PIX:</label>
-                    <input required placeholder="15" name="pix" id="pix">
+        <h1 style="margin: 24px;">Inserir Meta</h1>
+
+        <form id="formInserirMeta" onsubmit="inserirMeta()">
+            <div class="container" style="align-items: start;">
+                <!-- Box 1: Pix -->
+                <div class="box b-float-left b-align-middle" style="display: grid;">    
+                    <h2>Pix</h2>
+                    <label for="quantidade_pix">Quantidade:</label>
+                    <input type="number" required placeholder="15" name="quantidade_pix" id="quantidade_pix">
+                    <br>
+                    <label for="valor_pix">Valor:</label>
+                    <input required placeholder="15" name="valor_pix" id="valor_pix">
                 </div>
-            
+
+                <!-- Box 2: Recargas -->
                 <div class="box b-float-middle b-align-middle">   
-                    <div class="input-container">
-                        <label for="recargas">RECARGAS:</label>
-                        <input required placeholder="15" name="recargas" id="recargas">
+                    <div class="input-container" style="display: grid;">
+                        <h2>Recargas</h2>
+                        <label for="quantidade_recargas">Quantidade:</label>
+                        <input required placeholder="15" name="quantidade_recargas" id="quantidade_recargas">
+                        <br>
+                        <label for="valor_recargas">Valor:</label>
+                        <input required placeholder="15" name="valor_recargas" id="valor_recargas">
                     </div>
                 </div>
-            
-                <div class="box b-float-right b-align-middle">
-                    <label for="nps">NPS:</label>
-                    <input required placeholder="15" name="nps" id="nps">
+
+                <!-- Box 3: NPS -->
+                <div class="box b-float-right b-align-middle" style="display: grid;">
+                    <h2>NPS</h2>
+                    <label for="quantidade_nps">Quantidade:</label>
+                    <input required placeholder="15" name="quantidade_nps" id="quantidade_nps">
                 </div>
-            
-                <div class="box b-float-right b-align-middle">
+
+                <!-- Box 4: Data -->
+                <div class="box b-float-right b-align-middle" style="display: grid;">
+                    <h2>Data</h2>
                     <label for="dataEscolhida">Selecione uma data:</label>
                     <input type="date" name="dataEscolhida" id="dataEscolhida" required>
                 </div>
-
             </div>
-            <button type="submit" onclick="excluirDadosDoDia()">Enviar</button>
+
+            <button type="submit" onclick="zerarDadosDoDia()">Enviar</button>
         </form>
     </section>
+    <section style="text-align: center;">
+        <h1>Metas</h1>
+        <div class="container" id="exibirMetas" style="align-items: start;">
+        </div>
+    </section>
+
+    <script src="./js/exibirMetas.js"></script>
+    <script src="./js/atualizarDataDoDia.js"></script>
+    <script src="./js/inserirMeta.js"></script>
+    <script src="./js/zerarDadosDoDiaPix.js"></script>
     <script src="/Classement/Scripts/VerificarLogin.js"></script>
 </body>
 </html>

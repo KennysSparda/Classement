@@ -1,16 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
     var menuCheckbox = document.getElementById('menu');
-    var section = document.querySelector('section');
+    var sectionPix = document.querySelector('section#pix');
+    var sectionRecargas = document.querySelector('section#recargas');
+    var sectionNPS = document.querySelector('section#NPS');
 
 
     menuCheckbox.addEventListener('change', function() {
       if (this.checked) {
-        section.classList.add('blur');
-
-           
+        sectionPix.classList.add('blur');
+        sectionRecargas.classList.add('blur');
+        sectionNPS.classList.add('blur');
       } else {
-        section.classList.remove('blur');
-
+        sectionPix.classList.remove('blur');
+        sectionRecargas.classList.remove('blur');
+        sectionNPS.classList.remove('blur');
       }
     });
 
@@ -20,33 +23,57 @@ document.addEventListener('DOMContentLoaded', function() {
       item.addEventListener('click', function() {
         // Feche o menu quando um item for clicado
         menuCheckbox.checked = false;
-        section.classList.remove('blur');
+        sectionPix.classList.remove('blur');
+        sectionRecargas.classList.remove('blur');
+        sectionNPS.classList.remove('blur');
       });
     });
   });
 
-  
+function ExibeRankingPix() {
+  const sectionPix = document.getElementById("pix");
+  const sectionRecargas = document.getElementById("recargas");    
+  const sectionNPS = document.getElementById("NPS");
+
+  sectionPix.style.display = 'block';
+  sectionRecargas.style.display = 'none';
+  sectionNPS.style.display = 'none';
+}
+
+function ExibeRankingRecargas() {
+
+  const sectionPix = document.getElementById("pix");
+  const sectionRecargas = document.getElementById("recargas");    
+  const sectionNPS = document.getElementById("NPS");
+
+  sectionPix.style.display = 'none';
+  sectionRecargas.style.display = 'block';
+  sectionNPS.style.display = 'none';
+}
+
+function ExibeRankingNPS() { 
+  const sectionPix = document.getElementById("pix");
+  const sectionRecargas = document.getElementById("recargas");    
+  const sectionNPS = document.getElementById("NPS");
+
+  sectionPix.style.display = 'none';
+  sectionRecargas.style.display = 'none';
+  sectionNPS.style.display = 'block';
+}
+
 function toggleRanking(event) {
   const targetLi = event.target.closest('li');
   if (!targetLi) return;
 
   const rankingSelecionado = targetLi.dataset.rank;
 
-  const sectionPix = document.getElementById("pix");
-  const sectionRecargas = document.getElementById("recargas");    
-  const sectionNPS = document.getElementById("NPS");
+
 
   if (rankingSelecionado === 'pix') {
-      sectionPix.style.display = 'block';
-      sectionRecargas.style.display = 'none';
-      sectionNPS.style.display = 'none';
+      ExibeRankingPix();
   } else if (rankingSelecionado === 'recargas') {
-      sectionPix.style.display = 'none';
-      sectionRecargas.style.display = 'block';
-      sectionNPS.style.display = 'none';
+    ExibeRankingRecargas();
   } else {
-      sectionPix.style.display = 'none';
-      sectionRecargas.style.display = 'none';
-      sectionNPS.style.display = 'block';
+    ExibeRankingNPS();
   }
 }

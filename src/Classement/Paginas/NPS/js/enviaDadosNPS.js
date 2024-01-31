@@ -1,37 +1,22 @@
-document.getElementById("formPesquisaNPS").addEventListener("submit", function(e) {
-  e.preventDefault();
+// JavaScript para FormEnviarPesquisaNPS
+document.getElementById("FormEnviarPesquisaNPS").addEventListener("submit", function (event) {
+  event.preventDefault(); // Evitar o comportamento padrão do formulário
+  var dataEscolhida = document.getElementById("data_escolhida").value;
+  var matriculaOperador = document.getElementById("input_matricula").value;
+  var quantidadePesquisas = document.getElementById("input_quantidade_NPS").value;
 
-  // Coleta os dados do segundo formulário
-  var matricula = document.getElementById("input_matricula").value;
-  var dataEscolhida = document.getElementById("dataEscolhida").value;
-  var quantidadeNPS = document.getElementById("input_quantidade_NPS").value;
+  // Fazer uma requisição AJAX para o servidor PHP
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/Classement_backend/nps/inserir_dados_nps.php", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-  // Constrói a string com os dados do segundo formulário
-  var dataPesquisaNPS = "matricula=" + encodeURIComponent(matricula) +
-                        "&dataEscolhida=" + encodeURIComponent(dataEscolhida) +
-                        "&quantidadeNPS=" + encodeURIComponent(quantidadeNPS);
-
-  var xhrPesquisaNPS = new XMLHttpRequest();
-  xhrPesquisaNPS.open("POST", "/Classement_backend/nps/inserir_dados_nps.php", true);
-  xhrPesquisaNPS.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-  xhrPesquisaNPS.onreadystatechange = function() {
-    if (xhrPesquisaNPS.readyState === 4) {
-      if (xhrPesquisaNPS.status === 200) {
-        var response = JSON.parse(xhrPesquisaNPS.responseText);
-
-        if (response.status === 'success') {
-          // Feedback de sucesso ou redirecionamento, se necessário
-          alert("Dados da pesquisa NPS inseridos com sucesso!");
-        } else {
-          alert("Erro ao inserir dados da pesquisa NPS.");
-        }
-      } else {
-        alert("Erro na requisição para inserir dados da pesquisa NPS. Código de status: " + xhrPesquisaNPS.status);
+  xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+          // Manipular a resposta do servidor (se necessário)
+          console.log(xhr.responseText);
       }
-    }
   };
 
-  // Envia a string com os dados do segundo formulário
-  xhrPesquisaNPS.send(dataPesquisaNPS);
+  // Enviar os dados para o servidor
+  xhr.send("data_escolhida=" + dataEscolhida + "&matricula_operador=" + matriculaOperador + "&quantidadePesquisas=" + quantidadePesquisas);
 });

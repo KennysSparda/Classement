@@ -1,34 +1,22 @@
 <?php
 include("../conexao.php");
 
-// Verifica se o formulário foi submetido
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Verifica se as variáveis 'dataEscolhida' e 'matricula' estão presentes no array $_POST
-    if (isset($_POST['dataEscolhida']) && isset($_POST['matricula'])) {
-        // Obtém os dados do formulário
-        $dataEscolhida = $_POST['dataEscolhida'];
-        $matricula = $_POST['matricula'];
+// Obter a matrícula do operador da requisição POST
+$matriculaOperador = $_POST['matricula_operador'];
+$dataEscolhida = $_POST['data_escolhida'];
 
-        // Utiliza prepared statement com placeholder e bind value
-        $sql = $conexao->prepare("DELETE FROM classement_pesquisas_diarias WHERE data = ? AND matricula_operador = ?");
-        $sql->bind_param("si", $dataEscolhida, $matricula);
-        $sql->execute();
+// Query para excluir dados do dia usando prepared statement
+$sql = "DELETE FROM classement_pesquisas_diarias WHERE matricula_operador = ? AND data = ?";
 
-        if ($sql->error) {
-            http_response_code(500); // Define o código de resposta HTTP para 500 (Erro interno do servidor)
-            echo "Erro na exclusão da classement_pesquisas_diarias: " . $sql->error;
-        } else {
-            echo "Exclusão realizada com sucesso.";
-        }
+$stmt = $conexao->prepare($sql);
+$stmt->bind_param("is", $matriculaOperador, $dataEscolhida);
 
-        // Fecha a conexão
-        $conexao->close();
-    } else {
-        http_response_code(400); // Define o código de resposta HTTP para 400 (Solicitação inválida)
-        echo "Erro: As variáveis 'dataEscolhida' e 'matricula' não estão presentes no formulário.";
-    }
+if ($stmt->execute()) {
+    echo "Dados excluídos com sucesso!";
 } else {
-    http_response_code(405); // Define o código de resposta HTTP para 405 (Método não permitido)
-    echo "Erro: Método não permitido. Utilize o método POST.";
+    echo "Erro ao excluir dados: " . $conexao->error;
 }
+
+$stmt->close();
+$conexao->close();
 ?>

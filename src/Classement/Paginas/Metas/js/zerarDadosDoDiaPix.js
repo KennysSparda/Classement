@@ -1,4 +1,4 @@
-function excluirDadosDoDia() {
+function zerarDadosDoDia() {
     
     // Obtenha o valor da data selecionada
     var dataEscolhida = document.getElementById("dataEscolhida").value;
@@ -13,7 +13,7 @@ function excluirDadosDoDia() {
 
         // Crie uma requisição para excluir os dados do dia
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/Classement_backend/metas/zerar_dados_do_dia_metas.php", true);
+        xhr.open("POST", "/Classement_backend/metas/zerar_metas_do_dia.php", true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
@@ -25,7 +25,7 @@ function excluirDadosDoDia() {
                         // console.log(xhr.responseText);
                     }
                 } else {
-                    alert({ status: 'error', message: 'Erro ao excluir dados.' });
+                    alert({ status: 'error', message: `Erro ao zerar os dados da meta do dia. ${dataEscolhida}` });
                 }
             }
         };

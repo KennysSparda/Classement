@@ -26,21 +26,25 @@ function atualizarTabelaPix() {
                 quantidadeTotal += transacoes;
             });
             // Atualiza o valor total no tfoot
-            document.getElementById('valorTotal').textContent = valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById('valorTotalPix').textContent = valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
             // Atualiza a quantidade total no tfoot
-            document.getElementById('qntdTotal').textContent = quantidadeTotal;
+            document.getElementById('qntdTotalPix').textContent = quantidadeTotal;
         })
         .catch(error => console.error('Erro ao buscar dados:', error));
 }
 
 // Função para ser chamada quando a data é alterada
 function dataSelecionadaAlteradaPix() {
-    atualizarTabelaPix();
+    atualizarTabelaPix()
+    atualizarMetasDiarias()
+    atualizarRestantePix()
 }
 
 // Função para ser chamada quando a data é alterada
 function dataSelecionadaAlteradaPesquisaAvancadaPix() {
-    pesquisaAvancadaPix();
+    pesquisaAvancadaPix()
+    atualizarMetasMensal()
+    atualizarRestantePix()
 }
 
 // Adiciona um ouvinte de evento para detectar a alteração no input
@@ -111,9 +115,9 @@ function pesquisaAvancadaPix() {
                     quantidadeTotal += transacoes;
                 });
                 // Atualiza o valor total no tfoot
-                document.getElementById('valorTotal').textContent = valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                document.getElementById('valorTotalPix').textContent = valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
                 // Atualiza a quantidade total no tfoot
-                document.getElementById('qntdTotal').textContent = quantidadeTotal;
+                document.getElementById('qntdTotalPix').textContent = quantidadeTotal;
             })
             .catch(error => console.error('Erro ao buscar dados:', error));
     } else {
@@ -165,9 +169,9 @@ function atualizarTabelaRecargas() {
                 quantidadeTotal += transacoes;
             });
             // Atualiza o valor total no tfoot
-            document.getElementById('valorTotal').textContent = valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById('valorTotalRecargas').textContent = valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
             // Atualiza a quantidade total no tfoot
-            document.getElementById('qntdTotal').textContent = quantidadeTotal;
+            document.getElementById('qntdTotalRecargas').textContent = quantidadeTotal;
         })
         .catch(error => console.error('Erro ao buscar dados:', error));
 }
@@ -175,11 +179,15 @@ function atualizarTabelaRecargas() {
 // Função para ser chamada quando a data é alterada
 function dataSelecionadaAlteradaRecargas() {
     atualizarTabelaRecargas();
+    atualizarMetasDiarias();
+    atualizarRestanteRecargas()
 }
 
 // Função para ser chamada quando a data é alterada
 function dataSelecionadaAlteradaPesquisaAvancadaRecargas() {
     pesquisaAvancadaRecargas();
+    atualizarMetasMensal()
+    atualizarRestanteRecargas();
 }
 
 // Adiciona um ouvinte de evento para detectar a alteração no input
@@ -217,9 +225,9 @@ function pesquisaAvancadaRecargas() {
                     quantidadeTotal += transacoes;
                 });
                 // Atualiza o valor total no tfoot
-                document.getElementById('valorTotal').textContent = valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                document.getElementById('valorTotalRecargas').textContent = valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
                 // Atualiza a quantidade total no tfoot
-                document.getElementById('qntdTotal').textContent = quantidadeTotal;
+                document.getElementById('qntdTotalRecargas').textContent = quantidadeTotal;
             })
             .catch(error => console.error('Erro ao buscar dados:', error));
     } else {
@@ -277,11 +285,15 @@ function atualizarTabelaNPS() {
 // Função para ser chamada quando a data é alterada
 function dataSelecionadaAlteradaNPS() {
     atualizarTabelaNPS();
+    atualizarMetasDiarias();
+    atualizarRestanteNPS();
 }
 
 // Função para ser chamada quando a data é alterada
 function dataSelecionadaAlteradaPesquisaAvancadaNPS() {
     pesquisaAvancadaNPS();
+    atualizarMetasMensal()
+    atualizarRestanteNPS();
 }
 
 // Adiciona um ouvinte de evento para detectar a alteração no input
@@ -339,3 +351,122 @@ function togglePesquisaFormNPS() {
         dataSelecionadaAlteradaPesquisaAvancadaNPS();
     }
 }
+
+function atualizarMetasMensal() {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // Converte a resposta JSON em um objeto JavaScript
+            var data = JSON.parse(this.responseText);
+
+            // Preenche os campos da tabela com os dados obtidos
+            document.getElementById("valorMetaPix").innerHTML = Number(data.valor_transacao).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) || 0;
+            document.getElementById("QuantidadeMetaPix").innerHTML = data.quantidade_pix || 0;
+            document.getElementById("ValorMetaRecargas").innerHTML = Number(data.valor_recargas).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) || 0;
+            document.getElementById("QuantidadeMetaRecargas").innerHTML = data.quantidade_recargas || 0;
+            document.getElementById("QuantidadeMetaNPS").innerHTML = data.quantidade_pesquisas || 0;
+        }
+    };
+
+    // Substitua "seu_arquivo_php.php" pelo caminho do seu script PHP
+    xhttp.open("GET", "/Classement_backend/metas/exibir_meta_atual.php", true);
+    xhttp.send();
+}
+
+function atualizarMetasDiarias() {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // Converte a resposta JSON em um objeto JavaScript
+            var data = JSON.parse(this.responseText);
+
+            // Preenche os campos da tabela com os dados obtidos
+            document.getElementById("valorMetaPix").innerHTML = Number(Math.ceil(data.valor_transacao/30)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) || 0;
+            document.getElementById("QuantidadeMetaPix").innerHTML = Math.ceil(data.quantidade_pix/30) || 0;
+            document.getElementById("ValorMetaRecargas").innerHTML = Number(Math.ceil(data.valor_recargas/30)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) || 0;
+            document.getElementById("QuantidadeMetaRecargas").innerHTML = Math.ceil(data.quantidade_recargas/30) || 0;
+            document.getElementById("QuantidadeMetaNPS").innerHTML = Math.ceil(data.quantidade_pesquisas/30) || 0;
+        }
+    };
+
+    // Substitua "seu_arquivo_php.php" pelo caminho do seu script PHP
+    xhttp.open("GET", "/Classement_backend/metas/exibir_meta_atual.php", true);
+    xhttp.send();
+}
+
+function formatarFloat(valor) {
+    return parseFloat(valor.replace(/[^\d,.-]/g, '').replace('.', '').replace(',', '.'))
+}
+
+function aguardaratualizarMetasMensal() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, 500);
+    });
+}
+
+async function atualizarRestantePix() {
+    const valorTotalPix = document.getElementById('valorTotalPix')
+    const quantidadeTotalPix = document.getElementById('qntdTotalPix')
+    const valorMetaPix = document.getElementById('valorMetaPix')
+    const quantidadeMetaPix = document.getElementById('QuantidadeMetaPix')
+    const restanteValorPix = document.getElementById('restanteValorPix')
+    const restanteQuantidadePix = document.getElementById('restanteQuantidadePix')
+    
+    await aguardaratualizarMetasMensal();
+
+    let valorPixNumber = formatarFloat(valorTotalPix.innerHTML);
+    let quantidadePixNumber = parseInt(quantidadeTotalPix.innerHTML.trim());
+    let valorMetaPixNumber = formatarFloat(valorMetaPix.innerHTML);
+    let quantidadeMetaPixNumber = parseInt(quantidadeMetaPix.innerHTML.trim());
+    
+    const resultadoSubtracao = valorMetaPixNumber - valorPixNumber;
+    restanteValorPix.innerHTML = isNaN(resultadoSubtracao) ? 'R$ 0,00' : Number(resultadoSubtracao).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    
+    restanteQuantidadePix.innerHTML = quantidadeMetaPixNumber - quantidadePixNumber || 0;
+}
+
+async function atualizarRestanteRecargas() {
+    const valorTotalRecargas = document.getElementById('valorTotalRecargas')
+    const quantidadeTotalRecargas = document.getElementById('qntdTotalRecargas')
+    const valorMetaRecargas = document.getElementById('ValorMetaRecargas')
+    const quantidadeMetaRecargas = document.getElementById('QuantidadeMetaRecargas')
+    const restanteValorRecargas = document.getElementById('restanteValorRecargas')
+    const restanteQuantidadeRecargas = document.getElementById('restanteQuantidadeRecargas')
+    
+    await aguardaratualizarMetasMensal();
+
+    let valorRecargasNumber = formatarFloat(valorTotalRecargas.innerHTML);
+    let quantidadeRecargasNumber = parseInt(quantidadeTotalRecargas.innerHTML.trim());
+    let valorMetaRecargasNumber = formatarFloat(valorMetaRecargas.innerHTML);
+    let quantidadeMetaRecargasNumber = parseInt(quantidadeMetaRecargas.innerHTML.trim());
+
+    const resultadoSubtracao = valorMetaRecargasNumber - valorRecargasNumber;
+    restanteValorRecargas.innerHTML = isNaN(resultadoSubtracao) ? 'R$ 0,00' : Number(resultadoSubtracao).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    
+    restanteQuantidadeRecargas.innerHTML = quantidadeMetaRecargasNumber - quantidadeRecargasNumber || 0;
+}
+
+async function atualizarRestanteNPS() {
+    const quantidadeTotalNPS = document.getElementById('qntdTotalNPS')
+    const quantidadeMetaNPS = document.getElementById('quantidadeMetaNPS')
+    const restanteQuantidadeNPS = document.getElementById('restanteQuantidadeNPS')
+
+    await aguardaratualizarMetasMensal();
+
+    let quantidadeNPSNumber =  parseInt(quantidadeTotalNPS.innerHTML.trim());
+    let quantidadeMetaNPSNumber = parseInt(quantidadeMetaNPS.innerHTML.trim());
+    restanteQuantidadeNPS.innerHTML = quantidadeMetaNPSNumber - quantidadeNPSNumber || 0;
+}
+
+
+// Chama a função ao carregar a página
+window.onload = function() {
+    atualizarMetasDiarias();
+    atualizarRestantePix();
+    atualizarRestanteRecargas();
+    atualizarRestanteNPS();
+};

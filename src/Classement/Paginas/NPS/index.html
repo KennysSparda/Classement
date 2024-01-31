@@ -25,26 +25,27 @@
             <h2>Atualizar ranking NPS</h2>
             <form id="formBuscarUsuario">
             <label for="input_matricula" class="box b-float-left b-align-right">Matricula</label>
-            <input type="number" id="input_matricula" required class="box b-float-left b-align-left"></input>
+            <input type="number" name="input_matricula" id="input_matricula" required class="box b-float-left b-align-left"></input>
             <button id="btn-buscar-operador" type="submit">Buscar</button>
             </form>
-            <form id="formPesquisaNPS">
+            <form id="FormEnviarPesquisaNPS">
             <label for="input_data" class="box b-float-left b-align-right">Data</label>
-            <input type="date" name="dataEscolhida" id="dataEscolhida" required class="box b-float-left b-align-left">
+            <input type="date" name="data_escolhida" id="data_escolhida" required class="box b-float-left b-align-left">
             <br>
             <label for="input_nome" class="box b-float-left b-align-right">Nome</label>
-            <input type="text" id="input_nome" required class="box b-float-left b-align-left"></input>
+            <input type="text" name="input_nome" id="input_nome" required class="box b-float-left b-align-left"></input>
             <br>
             <label for="input_quantidade_NPS" class="box b-float-left b-align-right">Quantidade Pesquisas</label>
-            <input type="number" id="input_quantidade_NPS" required class="box b-float-left b-align-left"></input>
+            <input type="number" name="input_quantidade_NPS" id="input_quantidade_NPS" required class="box b-float-left b-align-left"></input>
             <br>
-            <button id="btn-salvar" type="submit" onclick="excluirDadosDoDia()" style="display: none;">Salvar</button>
+            <button id="btn-salvar" type="submit" onclick="zerarDadosDoDiaNPS()" style="display: none;">Salvar</button>
             </form>
         </div>
     </section>
+    <script src="js/atualizarDataDoDia.js"></script>
     <script src="js/buscarOperador.js"></script>
     <script src="js/enviaDadosNPS.js"></script>
-    <script src="js/zerarDadosDoDiaPix.js"></script>
+    <script src="js/zerarDadosDoDiaNPS.js"></script>
     <script src="/Classement/Scripts/VerificarLogin.js"></script>
 </body>
 </html>
