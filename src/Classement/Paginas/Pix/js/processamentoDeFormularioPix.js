@@ -1,4 +1,4 @@
-document.getElementById("formRecargas").addEventListener("submit", function(e) {
+document.getElementById("formPix").addEventListener("submit", function(e) {
     e.preventDefault(); // Evita a submissão normal do formulário
 
     // Use AJAX para enviar os dados do formulário para o backend
@@ -13,7 +13,7 @@ document.getElementById("formRecargas").addEventListener("submit", function(e) {
             // Exiba uma mensagem usando um alert
             alert("A solicitação foi processada com sucesso!");
             // Limpe o formulário se necessário
-            document.getElementById("formRecargas").reset();
+            document.getElementById("formPix").reset();
         } else {
             // Exiba uma mensagem de erro usando um alert
             alert("Houve um problema ao processar a solicitação.");

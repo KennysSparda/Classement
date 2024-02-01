@@ -52,39 +52,6 @@ document.getElementById('dataSelecionadaPix').addEventListener('change', dataSel
 document.getElementById('dataSelecionadaPix1').addEventListener('change', dataSelecionadaAlteradaPesquisaAvancadaPix);
 document.getElementById('dataSelecionadaPix2').addEventListener('change', dataSelecionadaAlteradaPesquisaAvancadaPix);
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Obtemos o elemento de input 'dataSelecionada'
-    const dataSelecionadaInputPix = document.getElementById('dataSelecionadaPix');
-    const dataSelecionadaInputPix1 = document.getElementById('dataSelecionadaPix1');
-    const dataSelecionadaInputPix2 = document.getElementById('dataSelecionadaPix2');
-    const dataSelecionadaInputRecargas = document.getElementById('dataSelecionadaRecargas');
-    const dataSelecionadaInputRecargas1 = document.getElementById('dataSelecionadaRecargas1');
-    const dataSelecionadaInputRecargas2 = document.getElementById('dataSelecionadaRecargas2');
-    const dataSelecionadaInputNPS = document.getElementById('dataSelecionadaNPS');
-    const dataSelecionadaInputNPS1 = document.getElementById('dataSelecionadaNPS1');
-    const dataSelecionadaInputNPS2 = document.getElementById('dataSelecionadaNPS2');
-
-    // Criamos uma nova data representando a data atual
-    const dataAtual = new Date();
-
-    // Formatamos a data no formato YYYY-MM-DD
-    const dataFormatada = `${dataAtual.getFullYear()}-${(dataAtual.getMonth() + 1).toString().padStart(2, '0')}-${dataAtual.getDate().toString().padStart(2, '0')}`;
-
-    // Definimos o valor do input como a data formatada
-    dataSelecionadaInputPix.value = dataFormatada;
-    dataSelecionadaInputPix1.value = dataFormatada;
-    dataSelecionadaInputPix2.value = dataFormatada;
-    dataSelecionadaInputRecargas.value = dataFormatada;
-    dataSelecionadaInputRecargas1.value = dataFormatada;
-    dataSelecionadaInputRecargas2.value = dataFormatada;
-    dataSelecionadaInputNPS.value = dataFormatada;
-    dataSelecionadaInputNPS1.value = dataFormatada;
-    dataSelecionadaInputNPS2.value = dataFormatada;
-
-    // Chamamos a função para atualizar a tabela
-    atualizarTabelaPix();
-});
-
 function pesquisaAvancadaPix() {
     const dataSelecionada1 = document.getElementById('dataSelecionadaPix1').value;
     const dataSelecionada2 = document.getElementById('dataSelecionadaPix2').value;
@@ -462,6 +429,40 @@ async function atualizarRestanteNPS() {
     restanteQuantidadeNPS.innerHTML = quantidadeMetaNPSNumber - quantidadeNPSNumber || 0;
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Obtemos o elemento de input 'dataSelecionada'
+    const dataSelecionadaInputPix = document.getElementById('dataSelecionadaPix');
+    const dataSelecionadaInputPix1 = document.getElementById('dataSelecionadaPix1');
+    const dataSelecionadaInputPix2 = document.getElementById('dataSelecionadaPix2');
+    const dataSelecionadaInputRecargas = document.getElementById('dataSelecionadaRecargas');
+    const dataSelecionadaInputRecargas1 = document.getElementById('dataSelecionadaRecargas1');
+    const dataSelecionadaInputRecargas2 = document.getElementById('dataSelecionadaRecargas2');
+    const dataSelecionadaInputNPS = document.getElementById('dataSelecionadaNPS');
+    const dataSelecionadaInputNPS1 = document.getElementById('dataSelecionadaNPS1');
+    const dataSelecionadaInputNPS2 = document.getElementById('dataSelecionadaNPS2');
+
+    // Criamos uma nova data representando a data atual
+    const dataAtual = new Date();
+
+    // Formatamos a data no formato YYYY-MM-DD
+    const dataFormatada = `${dataAtual.getFullYear()}-${(dataAtual.getMonth() + 1).toString().padStart(2, '0')}-${dataAtual.getDate().toString().padStart(2, '0')}`;
+
+    // Definimos o valor do input como a data formatada
+    dataSelecionadaInputPix.value = dataFormatada;
+    dataSelecionadaInputPix1.value = dataFormatada;
+    dataSelecionadaInputPix2.value = dataFormatada;
+    dataSelecionadaInputRecargas.value = dataFormatada;
+    dataSelecionadaInputRecargas1.value = dataFormatada;
+    dataSelecionadaInputRecargas2.value = dataFormatada;
+    dataSelecionadaInputNPS.value = dataFormatada;
+    dataSelecionadaInputNPS1.value = dataFormatada;
+    dataSelecionadaInputNPS2.value = dataFormatada;
+
+    // Chamamos a função para atualizar a tabela
+    atualizarTabelaPix();
+    atualizarTabelaRecargas();
+    atualizarTabelaNPS();
+});
 
 // Chama a função ao carregar a página
 window.onload = function() {
