@@ -18,7 +18,7 @@ if (isset($_GET['data_inicial']) && isset($_GET['data_final'])) {
             WHERE
                 DATE(td.data) BETWEEN '$dataInicial' AND '$dataFinal'
             GROUP BY
-                nome_operador
+                operador
             ORDER BY
                 quantidade DESC";
 

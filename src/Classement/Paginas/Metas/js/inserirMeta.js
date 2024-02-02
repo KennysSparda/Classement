@@ -31,4 +31,5 @@ function inserirMeta() {
 
     // Envio dos dados para o servidor PHP
     xhr.send(formData);
+    obterMetasDoPHP()
 }

@@ -1,7 +1,7 @@
 <?php
-	$usuario = "nome_usuario_filial";
-	$senha = "senha_do_usuario_filial";
-	$dbname = "nome_do_banco_filial";
+	$usuario = "filial837";
+	$senha = "senhafilial";
+	$dbname = "atacadao";
 	
 	//Criar a conexao
 	$conexao = mysqli_connect("localhost", $usuario, $senha, $dbname);
