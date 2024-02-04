@@ -80,10 +80,20 @@ Para mais detalhes técnicos, consulte a [Documentação Completa](/docs/Documen
 1. Clone o repositório.
 2. Solicite para a equipe de Suporte Linux a configuração do servidor SAVE para processar PHP e o módulo do PHP para interagir com MySql (Normalmente já configurado pela equipe Suporte Linux).
 3. Acesse o banco MySql da sua filial.
-4. Importe o script SQL para criar o banco de dados [banco.sql](/docs/database/banco.sql).
-5. Crie o primeiro usuário administrador com o comando disponibilizado no arquivo [inserir_usuario_admin.sql](/docs/database/inserir_usuario_admin.sql).
+4. Copie todo o conteúdo do arquivo [script_instalacao.sql](/docs/database/script_instalacao.sql) e cole na linha de comando do MySql para a criação das tabelas e do usuário admin. OBS: Usuario Admin: 1234, Senha Admin: 12341234
+5. Copie as duas pastas de dentro de [src]: [Classement] e [Classement_backend] para a pasta [portal](srvsaveFFF/portal/)
+6. Altere o arquivo [conexao.php](srvsaveFFF/portal/Classement_backend/conexao.php) para os dados de sua Filial.
 
 ## Instruções de Uso
 
 1. Abra o link "/srvsaveFFF/Classement/" em um navegador. Onde "FFF" será o número da sua filial.
-2. Utilize as páginas para visualizar estatísticas e administrar operadores, usuários administradores e metas.
+2. Crie todos os operadores de caixa ativos no ultimo mês.
+3. Alimente as planilhas com os CSV's gerados a partir do Sitef. (Confira o [manual_do_usuario](/docs/Manual_v1.0.1.pdf) para mais detalhes)
+4. Utilize as páginas para visualizar estatísticas e administrar operadores, usuários administradores e metas.
+
+## Instruções de Atualização
+
+1. Clone o repositório.
+2. Copie para área de trabalho o arquivo [conexao.php](/Classement_backend/conexao.php).
+3. Copie as duas pastas de dentro de [src]: [Classement] e [Classement_backend] para a pasta [portal](srvsaveFFF/portal/) Vai perguntar se deseja Substituir então confirme.
+4. Copie o arquivo [conexao.php] da área de trabalho para dentro de (/Classement_backend/conexao.php).

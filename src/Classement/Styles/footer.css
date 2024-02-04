@@ -20,13 +20,24 @@ footer {
 }
 
 #footerAutor {
-    text-align: right;
+    text-align: center;
     font-size: 11px;
     padding-right: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 
 #footerAutor a {
     text-decoration: none;
     color: var(--texto);
+}
+
+#footerAutor img {
+    border-radius: 50%;
+    margin-right: 16px;
+    margin-top: 8px;
+    height: 50px;
+    width: 50px;
 }

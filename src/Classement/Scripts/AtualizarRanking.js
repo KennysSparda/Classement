@@ -419,7 +419,7 @@ async function atualizarRestanteRecargas() {
 
 async function atualizarRestanteNPS() {
     const quantidadeTotalNPS = document.getElementById('qntdTotalNPS')
-    const quantidadeMetaNPS = document.getElementById('quantidadeMetaNPS')
+    const quantidadeMetaNPS = document.getElementById('QuantidadeMetaNPS')
     const restanteQuantidadeNPS = document.getElementById('restanteQuantidadeNPS')
 
     await aguardaratualizarMetasMensal();
